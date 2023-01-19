@@ -1,5 +1,7 @@
 import Layout from './../components/Layout';
 
 export default function index() {
-  return <Layout>index</Layout>;
+  return <Layout>
+    <div>index</div>
+  </Layout>;
 }

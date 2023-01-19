@@ -14,6 +14,14 @@ module.exports = {
       lg: '1200px',
       xl: '1536px',
     },
+    colors: {
+      primary_black: '#000000',
+      primary_blackLight: '#1A1E2E',
+    },
+    textColor: {
+      white: '#FFFFFF',
+      primary_blue: '#1B4DB1',
+    },
   },
   plugins: [],
 };

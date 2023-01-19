@@ -21,14 +21,19 @@ export default function Layout({
   description = 'Website oficial',
 }: props) {
   return (
-    <div>
+    <>
       <Head>
         <title>{title}</title>
         <meta name="description" content={description} />
+        <link rel="stylesheet" href="../styles/globals.css" />
       </Head>
-      <Header></Header>
-      <main>{children}</main>
-      <Footer></Footer>
-    </div>
+      <div>
+        <Header />
+        <main className="max-w-7xl mx-auto min-h-screen bg-slate-700">
+          {children}
+        </main>
+        <Footer />
+      </div>
+    </>
   );
 }

@@ -26,6 +26,7 @@
   border-radius: 23px;
   box-sizing: border-box;
 }
+
 .component1 p {
   width: 100px;
   height: 15px;
@@ -60,6 +61,7 @@
   flex-direction: row-reverse;
   background: #ffffff;
   border-radius: 23px;
+  position: relative;
 }
 
 .search-bar input {
@@ -77,6 +79,7 @@
 
   color: #a7a6a7;
 }
+
 .search-bar input::placeholder {
   font-family: 'Roboto', sans-serif;
   font-style: normal;
@@ -97,12 +100,14 @@
   border-radius: 0px;
   margin-right: 20px;
 }
+
 .button-next {
   height: 51.6250114440918px;
   width: 51.6250114440918px;
 
   border-radius: 0px;
 }
+
 .button-next .icon {
   background-image: url('../public/next.png');
   background-repeat: no-repeat;
@@ -110,6 +115,7 @@
   height: 100%;
   width: 100%;
 }
+
 .liked-icon button {
   height: 49px;
   width: 49px;
@@ -121,6 +127,7 @@
   padding-top: 3px;
   border: 2px solid #ffffff;
 }
+
 .liked-icon .icon {
   background-image: url('../public/likedIcon.png');
   background-repeat: no-repeat;
@@ -128,6 +135,7 @@
   height: 26px;
   width: 26px;
 }
+
 .like-icon button {
   height: 49px;
   width: 49px;
@@ -139,6 +147,7 @@
   padding-top: 3px;
   border: 2px solid #ffffff;
 }
+
 .like-icon .icon {
   background-image: url('../public/likedIcon.png');
   background-repeat: no-repeat;
