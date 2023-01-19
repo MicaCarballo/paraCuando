@@ -8,7 +8,7 @@ const Header = () => {
   const email = 'email@test.com';
 
   return (
-    <div className="bg-primary_black text-white">
+    <div className="bg-primary_blackLight text-white">
       <nav className="flex gap-8 justify-between items-center px-4 h-16 w-full max-w-screen-lg my-0 mx-auto">
         <Link href={'/home'}>
           <Image
