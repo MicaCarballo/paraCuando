@@ -14,10 +14,20 @@ module.exports = {
       lg: '1200px',
       xl: '1536px',
     },
-  },
-  extend: {
-    colors: {
-      primaryblue: '#1fb6ff',
+
+    extend: {
+      colors: {
+        primaryblue: '#1fb6ff',
+        primaryyellow: '#F3F243',
+        primarypink: '#FF64BC',
+        primaryblack: '#000000',
+        primaryblackLight: '#1A1E2E',
+        primarygrayDark: '#6E6A6C',
+        primarygray: '#A7A6A7',
+        primarygrayLight: '#D9D9D9',
+        primarygrayLighter: '#F8F7FA',
+        secondaryred: '#EF3F47',
+      },
     },
   },
 
