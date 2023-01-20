@@ -15,5 +15,11 @@ module.exports = {
       xl: '1536px',
     },
   },
+  extend: {
+    colors: {
+      primaryblue: '#1fb6ff',
+    },
+  },
+
   plugins: [],
 };
