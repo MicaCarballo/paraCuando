@@ -16,10 +16,12 @@ module.exports = {
     },
     backgroundImage: {
       paraCuandoTitle: "url('../public/paraCuandoTitle.png')",
+      paraCuandoTitleWhite: "url('../public/paraCuandoTitleWhite.png')",
       loginDesktop: "url('../public/loginDesktopImg.png')",
       loginDeskTitle1: "url('../public/loginDeskTitle1.png')",
       loginDeskTitle2: "url('../public/loginDeskTitle2.png')",
       signinDesktopImg: "url('../public/signinDesktopImg.png')",
+      loginDeskTitle1Small: "url('../public/loginDeskTitle1Small.png')",
     },
   },
   plugins: [],
