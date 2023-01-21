@@ -18,14 +18,22 @@ const Slider = () => {
     <div className="relative overflow-hidden">
       <Swiper
         breakpoints={{
-          // when window width is >= 640px
-          400: {
+          // when window width is >= 400px
+          200: {
             width: 320,
             slidesPerView: 1,
           },
           640: {
-            // width: 640,
+            width: 640,
+            slidesPerView: 2,
+          },
+          768: {
+            width: 960,
             slidesPerView: 3,
+          },
+          1278: {
+            width: 1280,
+            slidesPerView: 4,
           },
         }}
         // install Swiper modules
@@ -59,7 +67,13 @@ const Slider = () => {
             titleEvent="Concierto de BTS"
           />
         </SwiperSlide>
-        <SwiperSlide>Slide 4</SwiperSlide>
+        <SwiperSlide>
+          <SliderContent
+            img={sliderImg3}
+            text="Grupo musical coreano"
+            titleEvent="Concierto de BTS"
+          />
+        </SwiperSlide>
       </Swiper>
     </div>
   );
