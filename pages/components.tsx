@@ -7,6 +7,7 @@ import Header from '../components/Header';
 import LikedIcon from '../components/LikedIcon';
 import LikeIcon from '../components/LikeIcon';
 import SearchBar from '../components/SearchBar';
+import Slider from '../components/Slider/Slider';
 
 export default function Components() {
   const [isLogged, setIsLogged] = React.useState(true);
@@ -48,8 +49,13 @@ export default function Components() {
       <br />
       <br />
       <br />
-      <h4>9. SearchBar.tsx</h4>
+      <h3>9. SearchBar.tsx</h3>
       <SearchBar />
+      <br />
+      <br />
+      <br />
+      <h3>10. Slider.tsx </h3>
+      <Slider />
     </div>
   );
 }
