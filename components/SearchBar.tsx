@@ -1,9 +1,3 @@
-import { ReactNode } from 'react';
-
-interface Props {
-  classname: ReactNode;
-}
-
 const SearchBar = () => {
   return (
     <div className="search-bar border m-auto top-2/3">
