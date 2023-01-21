@@ -1,5 +1,12 @@
+import Slider from '../components/Slider/Slider';
 import Layout from './../components/Layout';
 
 export default function index() {
-  return <Layout>index</Layout>;
+  return (
+    <Layout>
+      <div>
+        <Slider />
+      </div>
+    </Layout>
+  );
 }
