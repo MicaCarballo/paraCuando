@@ -4,7 +4,7 @@ import SearchBar from './SearchBar';
 
 export default function Footer() {
   return (
-    <div className="h-96">
+    <div className="h-96 relative">
       <Image
         src={footerImg}
         width={0}
