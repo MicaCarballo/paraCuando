@@ -23,7 +23,7 @@ export default function Components() {
       <br />
       <br />
       <h3>3. Component1.tsx</h3>
-      <Component1 />
+      <Component1 text="texto" />
       <br />
       <br />
       <h3>4. Footer</h3>

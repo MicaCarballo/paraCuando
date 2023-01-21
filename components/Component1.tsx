@@ -1,7 +1,13 @@
-const Component1 = () => {
+import { ReactNode } from 'react';
+
+interface Props {
+  text: ReactNode;
+}
+
+const Component1 = ({ text }: Props) => {
   return (
     <div className="component1">
-      <p>Marcas y tiendas</p>
+      <p>{text}</p>
     </div>
   );
 };

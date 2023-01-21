@@ -5,6 +5,13 @@ import Image from 'next/image';
 import Layout from '../components/Layout';
 import SearchBar from '../components/SearchBar';
 
+import { Navigation } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
+// Import Swiper styles
+import Link from 'next/link';
+import 'swiper/css';
+import Component1 from '../components/Component1';
+
 export default function Detail() {
   let numberOfVotes = "9'000'000";
 
@@ -87,6 +94,51 @@ export default function Detail() {
           <button className="bg-blue text-white text-lg font-normal rounded-full my-5 py-2 w-full">
             Votar
           </button>
+          <div className="relative overflow-hidden">
+            <h2>¡Hagámoslo más personal!</h2>
+            <p>
+              Selecciona tus interes para brindarte sugerencia de acuerdo a tus
+              gustos
+            </p>
+            <Swiper
+              breakpoints={{
+                300: {
+                  width: 380,
+                  slidesPerView: 3,
+                },
+                768: {
+                  slidesPerView: 5,
+                  width: 700,
+                },
+              }}
+              modules={[Navigation]}
+              spaceBetween={50}
+              slidesPerView={3}
+              navigation
+              pagination={{ clickable: true }}
+              onSwiper={(swiper) => console.log(swiper)}
+              onSlideChange={() => console.log('slide change')}
+              zoom={true}
+              direction={'horizontal'}
+            >
+              <SwiperSlide>
+                <Component1 text="Artistas mexicanos" />
+              </SwiperSlide>
+              <SwiperSlide>
+                <Component1 text="Tiendas de ropa" />
+              </SwiperSlide>
+              <SwiperSlide>
+                <Component1 text="Rock" />
+              </SwiperSlide>
+              <SwiperSlide>
+                <Component1 text="Restaurantes" />
+              </SwiperSlide>
+              <SwiperSlide>
+                <Component1 text="Restaurantes" />
+              </SwiperSlide>
+            </Swiper>
+            <Link href={'/categories'}>Ver todos los intereses</Link>
+          </div>
         </div>
       </main>
     </Layout>
