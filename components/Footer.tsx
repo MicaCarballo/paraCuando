@@ -11,6 +11,7 @@ export default function Footer() {
         height={0}
         alt="footerImg"
         className="h-96 object-center object-cover mx-auto absolute -z-10 w-full"
+        priority={true}
       />
       <SearchBar />
     </div>
