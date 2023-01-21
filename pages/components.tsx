@@ -1,0 +1,55 @@
+import React from 'react';
+import ButtonNext from '../components/ButtonNext';
+import ButtonTextNext from '../components/ButtonTextNext';
+import Component1 from '../components/Component1';
+import Footer from '../components/Footer';
+import Header from '../components/Header';
+import LikedIcon from '../components/LikedIcon';
+import LikeIcon from '../components/LikeIcon';
+import SearchBar from '../components/SearchBar';
+
+export default function Components() {
+  const [isLogged, setIsLogged] = React.useState(true);
+  return (
+    <div>
+      <h1 className="text-5xl">Components</h1>
+      <h2>1. ButtonNext.tsx (Apparently doesnt work)</h2>
+      <ButtonNext />
+      <br />
+      <br />
+      <h2>2. ButtonTextNext.tsx</h2>
+      <ButtonTextNext />
+      <br />
+      <br />
+      <h3>3. Component1.tsx</h3>
+      <Component1 />
+      <br />
+      <br />
+      <h3>4. Footer</h3>
+      <Footer />
+      <br />
+      <br />
+      <h3>5. Header</h3>
+      <button
+        className="border p-2 rounded-xl"
+        onClick={() => setIsLogged(!isLogged)}
+      >
+        Press to change login status
+      </button>
+      <Header isLogged={isLogged} />
+      <br />
+      <br />
+      <br />
+      <br />
+      <h3>7. LikedIcon.tsx</h3>
+      <LikedIcon />
+      <h3>8. LikeIcon.tsx</h3>
+      <LikeIcon />
+      <br />
+      <br />
+      <br />
+      <h4>9. SearchBar.tsx</h4>
+      <SearchBar />
+    </div>
+  );
+}
