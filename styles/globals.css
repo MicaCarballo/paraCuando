@@ -53,7 +53,8 @@
 
 .search-bar {
   height: 46px;
-  width: 465px;
+  width: 100%;
+  max-width: 465px;
 
   border-radius: 23px;
   display: flex;
@@ -68,6 +69,7 @@
   position: absolute;
   width: 264px;
   left: 24px;
+  background-color: transparent;
 
   font-family: 'Roboto';
   font-style: normal;
@@ -99,6 +101,7 @@
   top: 3.1235008239746094px;
   border-radius: 0px;
   margin-right: 20px;
+  /* position: absolute; */
 }
 
 .button-next {
@@ -186,29 +189,10 @@
   color: #ffffff;
 }
 
-body {
+/* body {
   overflow-x: hidden;
-}
-
-/* SWIPER */
-.swiper {
-  width: 1000px;
-  height: 455px;
-  overflow: hidden;
-}
+} */
 
 .swiper-wrapper {
   padding-left: 1px;
 }
-
-/* @media screen and (min-width: 450px) {
-  .swiper-wrapper {
-    width: 450px !important;
-  }
-}
-
-@media screen and (min-width: 640px) {
-  .swiper-wrapper {
-    width: 640px !important;
-  }
-} */

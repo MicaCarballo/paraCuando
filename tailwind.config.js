@@ -17,10 +17,13 @@ module.exports = {
     colors: {
       primary_black: '#000000',
       primary_blackLight: '#1A1E2E',
+      blue: '#1B4DB1',
+      white: '#ffffff',
     },
     textColor: {
       white: '#FFFFFF',
       primary_blue: '#1B4DB1',
+      primary_black: '#000000',
     },
   },
   plugins: [],
