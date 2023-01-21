@@ -88,7 +88,7 @@ const Header = ({ isLogged = true }: Props) => {
                       cy="17"
                       r="16.25"
                       stroke="white"
-                      stroke-width="1.5"
+                      strokeWidth="1.5"
                     />
                   </svg>
 
@@ -168,7 +168,7 @@ const Header = ({ isLogged = true }: Props) => {
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <path d="M0 1H180" stroke="#6E6A6C" stroke-width="2" />
+                  <path d="M0 1H180" stroke="#6E6A6C" strokeWidth="2" />
                 </svg>
                 <Link href={'/help'}>Ayuda y Soporte</Link>
               </div>
