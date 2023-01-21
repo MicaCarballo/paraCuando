@@ -185,3 +185,30 @@
 
   color: #ffffff;
 }
+
+body {
+  overflow-x: hidden;
+}
+
+/* SWIPER */
+.swiper {
+  width: 1000px;
+  height: 455px;
+  overflow: hidden;
+}
+
+.swiper-wrapper {
+  padding-left: 1px;
+}
+
+/* @media screen and (min-width: 450px) {
+  .swiper-wrapper {
+    width: 450px !important;
+  }
+}
+
+@media screen and (min-width: 640px) {
+  .swiper-wrapper {
+    width: 640px !important;
+  }
+} */

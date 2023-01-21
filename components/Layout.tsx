@@ -25,7 +25,6 @@ export default function Layout({
       <Head>
         <title>{title}</title>
         <meta name="description" content={description} />
-        <link rel="stylesheet" href="../styles/globals.css" />
       </Head>
       <div>
         <Header />

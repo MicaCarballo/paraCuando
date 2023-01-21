@@ -4,12 +4,12 @@ import React from 'react';
 import paraCuandoLogo from '../public/paraCuandoLogo.svg';
 
 const Header = () => {
-  const [isLogged, setIsLogged] = React.useState(true);
+  const [isLogged, setIsLogged] = React.useState(false);
   const email = 'email@test.com';
 
   return (
     <div className="bg-primary_blackLight text-white">
-      <nav className="flex gap-8 justify-between items-center px-4 h-16 w-full max-w-screen-lg my-0 mx-auto">
+      <nav className="flex gap-4 justify-between items-center px-4 h-16 w-full max-w-screen-lg my-0 mx-auto">
         <Link href={'/home'}>
           <Image
             src={paraCuandoLogo}
@@ -18,10 +18,12 @@ const Header = () => {
             height={30}
           />
         </Link>
-        <div className="flex gap-8">
+        <div className="flex gap-7 text-sm">
           <Link
             href={'/new-publication'}
-            className="text-primary_blue flex items-center gap-2"
+            className={`text-primary_blue items-center gap-2 ${
+              isLogged ? 'hidden' : 'flex'
+            }`}
           >
             <svg
               width="16"
@@ -38,7 +40,10 @@ const Header = () => {
             Crear publicación
           </Link>
           {isLogged && (
-            <Link href={'/my-votes'} className="flex items-center gap-2">
+            <Link
+              href={'/my-votes'}
+              className="items-center gap-2 hidden sm:flex"
+            >
               <svg
                 width="19"
                 height="16"
@@ -60,7 +65,7 @@ const Header = () => {
           {isLogged ? (
             email
           ) : (
-            <div className="flex gap-8">
+            <div className="flex gap-4">
               <Link href={'/login'}>Log In</Link>
               <Link href={'/signup'}>Sign Up</Link>
             </div>
