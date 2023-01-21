@@ -1,0 +1,25 @@
+.img-container {
+  background-image: url('../public/event-card-mobile.png');
+  height: 244px;
+}
+.card-event-mobile {
+  height: 455px;
+  width: 373px;
+}
+
+.text-container {
+  height: 211px;
+}
+
+.icon {
+  background-image: url('../public/user-icon.png');
+}
+
+.card-event-desktop {
+  height: 454px;
+  width: 299px;
+}
+.img-container-desktop {
+  background-image: url('../public/event-card-desk.png');
+  height: 239px;
+}
