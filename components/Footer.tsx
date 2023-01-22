@@ -13,7 +13,7 @@ export default function Footer() {
         className="h-96 object-center object-cover mx-auto absolute -z-10 w-full"
         priority={true}
       />
-      <SearchBar />
+      <SearchBar classname="m-auto" />
     </div>
   );
 }
