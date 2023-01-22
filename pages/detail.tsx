@@ -12,7 +12,7 @@ import React from 'react';
 import 'swiper/css';
 import Component1 from '../components/Component1';
 import Slider from '../components/Slider/Slider';
-import styles from '../styles/detail-swiper.module.css';
+import styles from '../styles/categories-swiper.module.css';
 
 export default function Detail() {
   const [showMenuHeader, setShowMenuHeader] = React.useState(false);
@@ -96,16 +96,14 @@ export default function Detail() {
         <section className="pb-14 min-[800px]:pb-28">
           <div className="px-10 min-[1200px]:p-0 min-[800px]:grid grid-cols-2 gap-5">
             <div className="max-w-xl">
-              <h4 className="font-semibold">Artista / Pop / Rock</h4>
-              <h1 className="font-extrabold text-5xl">
-                Concierto de Lady Gaga
-              </h1>
-              <p className="py-6">
+              <h4 className="h500-normal--16px">Artista / Pop / Rock</h4>
+              <h1 className="h900-normal--48px">Concierto de Lady Gaga</h1>
+              <p className="h400-normal--16px py-6">
                 El concierto con la temática de Lady gaga en Las Vegas. El
                 concierto con la temática de Lady gaga en Las Vegas.El concierto
                 con la temática.
               </p>
-              <a href="link" className="text-primary_blue font-semibold">
+              <a href="link" className="h500-medium--14px text-primary_blue">
                 ladygaga.com
               </a>
               <span className="flex gap-2 items-center py-1 font-semibold">
@@ -144,10 +142,8 @@ export default function Detail() {
         </section>
         {/* CATEGORIAS */}
         <section className="w-full relative px-5 py-6 mb-16 bg-primarygrayLighter min-[800px]:px-10">
-          <h2 className="text-2xl font-semibold pb-1">
-            ¡Hagámoslo más personal!
-          </h2>
-          <p className="pb-5">
+          <h2 className="h500-normal--24px pb-2">¡Hagámoslo más personal!</h2>
+          <p className="h400-normal--16px pb-5">
             Selecciona tus interes para brindarte sugerencia de acuerdo a tus
             gustos
           </p>
@@ -193,8 +189,8 @@ export default function Detail() {
 
         {/* RECIENTES */}
         <section className="px-5 min-[1200px]:px-0">
-          <h2 className="text-2xl font-semibold">Recientes</h2>
-          <p className="pb-5">
+          <h2 className="h500-normal--24px pb-2">Recientes</h2>
+          <p className="h400-normal--16px pb-5">
             Las personas últimamente están hablando de esto
           </p>
           <Slider />

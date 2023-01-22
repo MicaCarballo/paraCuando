@@ -22,7 +22,10 @@ module.exports = {
       loginDeskTitle2: "url('../public/loginDeskTitle2.png')",
       signinDesktopImg: "url('../public/signinDesktopImg.png')",
       loginDeskTitle1Small: "url('../public/loginDeskTitle1Small.png')",
-      },
+      //* HOME
+      homeImage: "url('../public/homeImage.png')",
+      homeImageMobile: "url('../public/homeImageMobile.png')",
+    },
     colors: {
       primary_black: '#000000',
       primary_blackLight: '#1A1E2E',
