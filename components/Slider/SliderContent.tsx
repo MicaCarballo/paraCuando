@@ -8,7 +8,7 @@ interface Props {
 }
 
 export default function SliderContent({ img, text, titleEvent }: Props) {
-  let linkToEvent = 'https://www.youtube.com';
+  let linkToEvent = 'ladygaga.com';
   let numberOfVotes = "90'800'756";
 
   return (
@@ -26,17 +26,17 @@ export default function SliderContent({ img, text, titleEvent }: Props) {
       />
       <LikeIcon classname="like-icon absolute top-52 right-6" />
       <div className="p-3 px-5">
-        <h3 className="font-bold text-xl">{titleEvent}</h3>
-        <p className="h-24 overflow-hidden leading-tight">{text}</p>
+        <h3 className="h600-medium--20px">{titleEvent}</h3>
+        <p className="h400-medium--15px h-24 overflow-hidden">{text}</p>
         <a
           href={`${linkToEvent}`}
           rel="noreferrer"
           target="_blank"
-          className="text-primary_blue font-semibold absolute bottom-16 px-1"
+          className="text-primary_blue h500-medium--14px absolute bottom-16 px-1"
         >
           {linkToEvent}
         </a>
-        <span className="flex gap-2 items-center absolute bottom-9 px-2 font-semibold">
+        <span className="flex gap-2 items-center absolute bottom-9 px-2 h500-medium--14px">
           <svg
             width="17"
             height="17"
