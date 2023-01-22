@@ -6,21 +6,13 @@
 
 .component1 {
   height: 45px;
-  width: 138px;
-  left: -963px;
-  top: 9px;
-  border-radius: 23px;
-
-  background: linear-gradient(0deg, #a7a6a7, #a7a6a7),
-    linear-gradient(0deg, #ffffff, #ffffff);
-  background: #ffffff;
+  width: max-content;
+  border-radius: 999px;
 
   display: flex;
-  flex-direction: row;
   justify-content: center;
   align-items: center;
   padding: 15px 19px;
-  gap: 10px;
 
   /* GRAY */
 
@@ -30,27 +22,15 @@
 }
 
 .component1 p {
-  width: 100px;
-  height: 15px;
-
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 500;
   font-size: 13px;
   line-height: 15px;
-  display: flex;
-  align-items: center;
-  text-align: center;
 
   /* GRAY */
 
   color: #a7a6a7;
-
-  /* Inside auto layout */
-
-  flex: none;
-  order: 0;
-  flex-grow: 0;
 }
 
 .search-bar {
