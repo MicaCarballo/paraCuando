@@ -90,7 +90,7 @@ export default function Detail() {
           )}
         </div>
 
-        <SearchBar classname="m-0" />
+        <SearchBar className="m-0" />
       </header>
       <main className="py-20 lg:mx-[170px]">
         <section className="pb-14 min-[800px]:pb-28">
