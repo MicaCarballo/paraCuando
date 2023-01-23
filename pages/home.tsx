@@ -2,15 +2,14 @@ import paraCuandoLogoFull from '../public/paraCuandoLogoFull.svg';
 
 import Layout from '../components/Layout';
 
-import { Swiper, SwiperSlide } from 'swiper/react';
 // Import Swiper styles
 import Image from 'next/image';
 import Link from 'next/link';
 import 'swiper/css';
+import Categories from '../components/Categories';
 import Component1 from '../components/Component1';
 import SearchBar from '../components/SearchBar';
 import Slider from '../components/Slider/Slider';
-import styles from '../styles/categories-swiper.module.css';
 
 export default function Home() {
   return (
@@ -28,7 +27,7 @@ export default function Home() {
               height={0}
               style={{ width: '214px', height: '190px' }}
             />
-            <SearchBar classname="m-0" />
+            <SearchBar />
             <div className="flex gap-2">
               <Link href={'/brands'}>
                 <Component1 text="Marcas y tiendas" />
@@ -69,44 +68,7 @@ export default function Home() {
             Selecciona tus interes para brindarte sugerencia de acuerdo a tus
             gustos
           </p>
-          <Swiper
-            breakpoints={{
-              300: {
-                slidesPerView: 'auto',
-                enabled: true,
-              },
-              770: {
-                enabled: false,
-                normalizeSlideIndex: true,
-              },
-            }}
-            spaceBetween={10}
-            slidesPerView={'auto'}
-            direction={'horizontal'}
-            resistance={false}
-          >
-            <SwiperSlide className={styles.slide1}>
-              <Component1 text="Artistas mexicanos" />
-            </SwiperSlide>
-            <SwiperSlide className={styles.slide2}>
-              <Component1 text="Tiendas de ropa" />
-            </SwiperSlide>
-            <SwiperSlide className={styles.slide3}>
-              <Component1 text="Rock" />
-            </SwiperSlide>
-            <SwiperSlide className={styles.slide4}>
-              <Component1 text="Restaurantes" />
-            </SwiperSlide>
-            <SwiperSlide className={styles.slide5}>
-              <Component1 text="Restaurantes" />
-            </SwiperSlide>
-          </Swiper>
-          <Link
-            href={'/categories'}
-            className="py-4 block text-primary_blue w-max"
-          >
-            Ver todos los intereses
-          </Link>
+          <Categories />
         </section>
 
         {/* RECIENTES */}

@@ -32,7 +32,7 @@ export default function SliderContent({ img, text, titleEvent }: Props) {
           href={`${linkToEvent}`}
           rel="noreferrer"
           target="_blank"
-          className="text-primary_blue h500-medium--14px absolute bottom-16 px-1"
+          className="text-primaryblue h500-medium--14px absolute bottom-16 px-1"
         >
           {linkToEvent}
         </a>

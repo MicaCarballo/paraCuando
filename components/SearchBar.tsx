@@ -1,10 +1,10 @@
 interface Props {
-  classname?: string;
+  className?: string;
 }
 
-const SearchBar = ({ classname }: Props) => {
+const SearchBar = ({ className }: Props) => {
   return (
-    <div className={`search-bar border top-2/3 ${classname}`}>
+    <div className={`search-bar border top-2/3 ${className}`}>
       <input type="text" placeholder="¿Qué quieres ver en tu ciudad?" />
       <div className="icon"></div>
     </div>

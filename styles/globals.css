@@ -95,28 +95,27 @@
 
 .search-bar {
   height: 46px;
-  width: 100%;
-  max-width: 465px;
+  width: 90%;
 
   border-radius: 23px;
   display: flex;
   align-items: center;
-  flex-direction: row-reverse;
+  justify-content: space-between;
   background: #ffffff;
   border-radius: 23px;
   position: relative;
 }
 
 .search-bar input {
-  position: absolute;
-  width: 264px;
-  left: 24px;
+  width: 100%;
+  max-width: 264px;
+  margin-left: 24px;
   background-color: transparent;
 
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;
-  font-size: 13px;
+  font-size: 16px;
   line-height: 15px;
 
   /* GRAY */
@@ -136,13 +135,10 @@
 .search-bar .icon {
   background-image: url('../public/search.png');
   background-repeat: no-repeat;
-  background-size: contain;
-  height: 17.76972770690918px;
-  width: 16.33856773376465px;
-  left: 2.8736572265625px;
-  top: 3.1235008239746094px;
+  height: 17px;
+  width: 16px;
   border-radius: 0px;
-  margin-right: 20px;
+  padding-right: 35px;
   /* position: absolute; */
 }
 

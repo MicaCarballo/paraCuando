@@ -28,9 +28,7 @@ export default function Layout({
       </Head>
       <div>
         <Header />
-        <main className="max-w-7xl mx-auto min-h-screen bg-slate-700">
-          {children}
-        </main>
+        <div className="max-w-7xl mx-auto min-h-screen">{children}</div>
         <Footer />
       </div>
     </>
