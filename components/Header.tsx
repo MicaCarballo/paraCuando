@@ -27,7 +27,7 @@ const Header = ({ isLogged = true }: Props) => {
         <div className="flex gap-7 text-sm">
           <Link
             href={'/new-publication'}
-            className={`text-primary_blue items-center gap-2 ${
+            className={`text-primaryblue font-semibold items-center gap-2 ${
               isLogged ? 'hidden sm:flex' : 'flex'
             }`}
           >

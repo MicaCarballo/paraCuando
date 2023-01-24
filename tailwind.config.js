@@ -22,21 +22,31 @@ module.exports = {
       loginDeskTitle2: "url('../public/loginDeskTitle2.png')",
       signinDesktopImg: "url('../public/signinDesktopImg.png')",
       loginDeskTitle1Small: "url('../public/loginDeskTitle1Small.png')",
-      },
+      //* HOME
+      homeImage: "url('../public/homeImage.png')",
+      homeImageMobile: "url('../public/homeImageMobile.png')",
+      //* BRANDS
+      brandsImage: "url('../public/brandsImage.png')",
+      brandsImageMobile: "url('../public/brandsImageMobile.png')",
+      //* ARTISTS
+      artistsImage: "url('../public/artistsImage.png')",
+      //* TOURNAMENTS
+      tournamentsImage: "url('../public/tournamentsImage.png')",
+    },
     colors: {
       primary_black: '#000000',
       primary_blackLight: '#1A1E2E',
       blue: '#1B4DB1',
       white: '#ffffff',
     },
-    textColor: {
-      white: '#FFFFFF',
-      primary_blue: '#1B4DB1',
-      primary_black: '#000000',
-    },
+    // textColor: {
+    //   white: '#FFFFFF',
+    //   primary_blue: '#1B4DB1',
+    //   primary_black: '#000000',
+    // },
     extend: {
       colors: {
-        primaryblue: '#1fb6ff',
+        primaryblue: '#1B4DB1',
         primaryyellow: '#F3F243',
         primarypink: '#FF64BC',
         primaryblack: '#000000',

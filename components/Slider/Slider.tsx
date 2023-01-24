@@ -11,6 +11,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 import SliderContent from './SliderContent';
 
 const Slider = () => {
@@ -28,12 +29,8 @@ const Slider = () => {
             slidesPerView: 2,
           },
           768: {
-            width: 960,
+            width: 940,
             slidesPerView: 3,
-          },
-          1278: {
-            width: 1280,
-            slidesPerView: 4,
           },
         }}
         // install Swiper modules
@@ -42,9 +39,6 @@ const Slider = () => {
         slidesPerView={3}
         navigation
         pagination={{ clickable: true }}
-        onSwiper={(swiper) => console.log(swiper)}
-        onSlideChange={() => console.log('slide change')}
-        zoom={true}
       >
         <SwiperSlide>
           <SliderContent
