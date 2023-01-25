@@ -4,21 +4,18 @@ import addIcon from '../public/addIcon.png';
 import downArrow from '../public/arrow-down.png';
 import upArrow from '../public/arrow-up.png';
 
-const post = () => {
+export default function Post() {
   const [openType, setopenType] = useState(false);
   const [openCategories, setopenCategories] = useState(false);
   const [stepForm, setstepForm] = useState(0);
 
-  const handleClickTypes = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ): void => {
-    event.preventDefault();
-    setopenType(!openType);
+  const handleClickTypes = (event: { preventDefault: () => any }) => {
+    event.preventDefault(), setopenType(!openType);
   };
 
-  const handleClickCategories = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ): void => {
+  const handleClickCategories = (event: {
+    preventDefault: () => void;
+  }): void => {
     event.preventDefault();
     setopenCategories(!openCategories);
   };
@@ -229,6 +226,4 @@ const post = () => {
       </div>
     </div>
   );
-};
-
-export default post;
+}
