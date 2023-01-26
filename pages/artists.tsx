@@ -1,3 +1,7 @@
+// Images
+import artistImage from '../public/artistsImage.png';
+
+import Image from 'next/image';
 import Link from 'next/link';
 import Categories from '../components/Categories';
 import Component1 from '../components/Component1';
@@ -9,13 +13,22 @@ import Title1 from '../components/Texts/Title1';
 export default function Artists() {
   return (
     <Layout>
-      <div className="w-full h-[204px] bg-artistsImage bg-cover bg-no-repeat bg-center flex flex-col justify-center gap-1 items-start p-5 lg:pl-[170px]">
-        <h4 className="h500-normal--16px text-white">Home / Marcas</h4>
-        <Title1>Artistas y Conciertos</Title1>
-        <p className="text-white h500-normal--16px leading-[18px]">
-          Descubre las marcas y tiendas que la gente quiere cerca
-        </p>
-      </div>
+      <header className="relative ">
+        <Image
+          src={artistImage}
+          alt=""
+          priority={true}
+          placeholder={'blur'}
+          className="object-cover w-full h-[204px] absolute -z-10 object-center brightness-50 md:brightness-100"
+        />
+        <div className="w-full h-[204px] flex flex-col justify-center gap-1 items-start p-5 lg:pl-[170px]">
+          <h4 className="h500-normal--16px text-white">Home / Marcas</h4>
+          <Title1>Artistas y Conciertos</Title1>
+          <p className="text-white h500-normal--16px leading-[18px]">
+            Descubre las marcas y tiendas que la gente quiere cerca
+          </p>
+        </div>
+      </header>
       <main className="lg:mx-[170px]">
         <div className="flex flex-col-reverse lg:flex-row lg:items-end">
           <div className="px-5 pt-5 lg:pt-11 min-[1200px]:px-0 flex justify-center gap-2">
