@@ -3,7 +3,7 @@ import { ReactNode, useState } from 'react';
 import likeIcon from '../public/likedIcon.png';
 
 interface Props {
-  className: ReactNode;
+  className?: ReactNode;
 }
 
 const LikedIcon = ({ className }: Props) => {
