@@ -157,10 +157,10 @@
   width: 100%;
 }
 
-.liked-icon button {
+.liked-icon {
   height: 49px;
   width: 49px;
-  background-color: #ff64bc;
+  background-color: black;
   border-radius: 50%;
   display: flex;
   align-items: center;

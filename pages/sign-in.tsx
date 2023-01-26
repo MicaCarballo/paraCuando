@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 const SignIn = () => {
   return (
     <div className=" md:flex flex-row-reverse w-screen">
@@ -53,9 +55,11 @@ const SignIn = () => {
             </button>
           </form>
           <div className="text-center flex justify-center">
-            <p className=" flex self-center text-base m-2 cursor-pointer text-slate-500">
-              or Log in
-            </p>
+            <Link href="/login">
+              <p className=" flex self-center text-base m-2 cursor-pointer text-slate-500">
+                or Log in
+              </p>
+            </Link>
           </div>
         </div>
       </div>

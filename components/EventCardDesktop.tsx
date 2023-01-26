@@ -1,4 +1,4 @@
-import LikeIcon from './LikeIcon';
+import LikeIcon from './LikedIcon';
 
 const EventCardDesktop = () => {
   return (
