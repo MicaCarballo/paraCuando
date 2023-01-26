@@ -27,7 +27,7 @@ export default function Home() {
               height={0}
               style={{ width: '214px', height: '190px' }}
             />
-            <SearchBar />
+            <SearchBar className="max-w-md" />
             <div className="flex gap-2">
               <Link href={'/brands'}>
                 <Component1 text="Marcas y tiendas" />
