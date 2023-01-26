@@ -48,6 +48,7 @@ export default function Post() {
         >
           Back
         </h3>
+
         <div className=" w-11/12 h-3 bg-primarygrayLight self-center rounded-md mt-3 mb-9">
           {stepForm === 0 ? (
             <div className="w-3/5 h-3 bg-blue rounded-md"></div>

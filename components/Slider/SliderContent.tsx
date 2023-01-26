@@ -1,5 +1,5 @@
 import Image, { StaticImageData } from 'next/image';
-import LikeIcon from '../LikeIcon';
+import LikeIcon from '../LikedIcon';
 
 interface Props {
   img: StaticImageData;
