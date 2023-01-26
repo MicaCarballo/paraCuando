@@ -179,7 +179,7 @@ const Header = ({ isLogged = true }: Props) => {
             ) : (
               <div className="flex gap-4">
                 <Link href={'/login'}>Log In</Link>
-                <Link href={'/signup'}>Sign Up</Link>
+                <Link href={'/sign-up'}>Sign Up</Link>
               </div>
             )}
           </div>
