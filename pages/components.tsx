@@ -5,7 +5,7 @@ import Component1 from '../components/Component1';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import LikedIcon from '../components/LikedIcon';
-import LikeIcon from '../components/LikeIcon';
+
 import SearchBar from '../components/SearchBar';
 import Slider from '../components/Slider/Slider';
 
@@ -44,8 +44,7 @@ export default function Components() {
       <br />
       <h3>7. LikedIcon.tsx</h3>
       <LikedIcon />
-      <h3>8. LikeIcon.tsx</h3>
-      <LikeIcon />
+
       <br />
       <br />
       <br />
