@@ -1,5 +1,5 @@
 import Image, { StaticImageData } from 'next/image';
-import LikeIcon from '../LikedIcon';
+import LikedIcon from '../LikedIcon';
 
 interface Props {
   img: StaticImageData;
@@ -24,7 +24,7 @@ export default function SliderContent({ img, text, titleEvent }: Props) {
         alt="sliderImg"
         style={{ width: '300px', height: 'auto' }}
       />
-      <LikeIcon classname="like-icon absolute top-52 right-6" />
+      <LikedIcon className="absolute top-52 right-6" />
       <div className="p-3 px-5">
         <h3 className="h600-medium--20px">{titleEvent}</h3>
         <p className="h400-medium--15px h-24 overflow-hidden">{text}</p>
