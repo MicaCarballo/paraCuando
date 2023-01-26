@@ -15,7 +15,7 @@ const Header = ({ isLogged = true }: Props) => {
     <>
       <div className="bg-primaryblackLight text-white">
         <nav className="flex gap-4 justify-between items-center px-4 h-16 w-full max-w-screen-lg my-0 mx-auto">
-          <Link href={'/home'}>
+          <Link href={'/'}>
             <Image
               src={paraCuandoLogo}
               alt="paraCuandoLogo"
@@ -25,7 +25,7 @@ const Header = ({ isLogged = true }: Props) => {
           </Link>
           <div className="flex gap-7 text-sm">
             <Link
-              href={'/new-publication'}
+              href={'/post'}
               className={`text-primaryblue font-semibold items-center gap-2 ${
                 isLogged ? 'hidden sm:flex' : 'flex'
               }`}
