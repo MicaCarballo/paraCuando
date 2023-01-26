@@ -9,26 +9,11 @@ interface Props {
 
 const Header = ({ isLogged = true }: Props) => {
   const [showMenu, setShowMenu] = React.useState(false);
-
   const email = 'email@test.com';
-  // React.useEffect(() => {
-  //   const menu = document.getElementById('menu');
-  //   window.addEventListener('click', (e: MouseEvent): void => {
-  //     if (menu?.contains(e.target as Node)) {
-  //       setShowMenu(true);
-  //       console.log(showMenu);
-  //     } else {
-  //       setShowMenu(false);
-  //       console.log(showMenu);
-  //     }
-  //   });
-  // }, [showMenu]);
 
   return (
     <>
       <div className="bg-primaryblackLight text-white">
-        {/* ------------ CLOSE MENU ------------ */}
-
         <nav className="flex gap-4 justify-between items-center px-4 h-16 w-full max-w-screen-lg my-0 mx-auto">
           <Link href={'/home'}>
             <Image
@@ -140,7 +125,7 @@ const Header = ({ isLogged = true }: Props) => {
                 {/* ------- MENU ------- */}
                 <div
                   id="menu"
-                  className={`z-20 w-48 flex gap-x-8 gap-y-5 flex-col absolute top-8 -left-8 bg-white shadow-lg rounded-xl p-5 text-primary_black transition-opacity ${
+                  className={`z-20 w-48 flex gap-x-8 gap-y-5 flex-col absolute top-8 -left-8 bg-white shadow-lg rounded-xl p-5 text-primaryblack transition-opacity ${
                     showMenu ? 'opacity-100' : 'opacity-0 pointer-events-none'
                   }`}
                 >
