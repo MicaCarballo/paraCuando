@@ -30,7 +30,7 @@ export default function Post() {
 
   return (
     <div className=" with-screen h-auto  md:flex  ">
-      <div className=" h-80 w-full  bg-[#1B4DB1]   flex flex-col  md:h-screen md:w-1/3 md:pt-20">
+      <div className=" h-80 w-full bg-primaryblue   flex flex-col  md:h-screen md:w-1/3 md:pt-20">
         <div className=" h-28 w-32 bg-paraCuandoTitleWhite bg-contain bg-no-repeat bg-center  self-center mt-6 mb-3 "></div>
         <div className=" bg-loginDeskTitle1Small w-36 h-8 self-center"></div>
         <div className="flex flex-col p-4">
@@ -43,7 +43,7 @@ export default function Post() {
       </div>
       <div className=" w-full h-auto  flex flex-col px-4">
         <h3
-          className="m-3 text-[#1B4DB1] font-xl cursor-pointer"
+          className="m-3 text-primaryblue font-xl cursor-pointer"
           onClick={returnStep}
         >
           Back
@@ -51,9 +51,9 @@ export default function Post() {
 
         <div className=" w-11/12 h-3 bg-primarygrayLight self-center rounded-md mt-3 mb-9">
           {stepForm === 0 ? (
-            <div className="w-3/5 h-3 bg-blue rounded-md"></div>
+            <div className="w-3/5 h-3 bg-primaryblue rounded-md"></div>
           ) : (
-            <div className="w-full h-3 bg-blue rounded-md"></div>
+            <div className="w-full h-3 bg-primaryblue rounded-md"></div>
           )}
         </div>
 
@@ -186,7 +186,7 @@ export default function Post() {
               <button
                 onClick={completeFormStep}
                 type="button"
-                className=" h-11 w-28 px-4 bg-blue m-8 rounded-3xl text-white self-center"
+                className=" h-11 w-28 px-4 bg-primaryblue m-8 rounded-3xl text-white self-center"
               >
                 Siguiente
               </button>
@@ -204,7 +204,7 @@ export default function Post() {
                 </label>
                 <label
                   htmlFor="dropzone-file"
-                  className="flex flex-col items-center justify-center rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 bg-primarygrayLight dark:hover:border-gray-500 dark:hover:bg-gray-600 h-32 w-2/6"
+                  className="flex flex-col items-center justify-center rounded-lg cursor-pointer  dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 bg-primarygrayLight dark:hover:border-gray-500 dark:hover:bg-gray-600 h-32 w-2/6"
                 >
                   <Image src={addIcon} alt="add" />
                   <input id="dropzone-file" type="file" className="hidden" />
@@ -212,13 +212,13 @@ export default function Post() {
 
                 <label
                   htmlFor="dropzone-file"
-                  className="flex  items-center justify-center rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 bg-primarygrayLight dark:hover:border-gray-500 dark:hover:bg-gray-600 h-32 w-2/6"
+                  className="flex  items-center justify-center rounded-lg cursor-pointer  dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 bg-primarygrayLight dark:hover:border-gray-500 dark:hover:bg-gray-600 h-32 w-2/6"
                 >
                   <Image src={addIcon} alt="add" />
                   <input id="dropzone-file" type="file" className="hidden" />
                 </label>
               </div>
-              <button className=" h-11 w-28 px-4 bg-blue m-8 rounded-3xl text-white self-center">
+              <button className=" h-11 w-28 px-4 bg-primaryblue m-8 rounded-3xl text-white self-center">
                 Publicar
               </button>
             </section>
