@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Layout from '../components/Layout';
 import Rectangle183 from '../public/Rectangle183.png';
+import Vectormas from '../public/Vectormas.png';
 const Profilee = () => {
   return (
     <Layout title="Para Cuando? - Perfil" description="Perfil de Para Cuando?">
@@ -23,6 +24,14 @@ const Profilee = () => {
             height={206}
             alt=""
             className="relative left-1/2  -translate-x-1/2 top-28"
+          ></Image>
+
+          <Image
+            src={Vectormas}
+            width={17}
+            height={17}
+            alt=""
+            className="relative left-1/2  -translate-x-1/2 "
           ></Image>
         </div>
         <form action="" className=" mt-11 flex flex-col gap-4">
