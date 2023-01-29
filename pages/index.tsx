@@ -16,9 +16,10 @@ export default function Index() {
     <Layout
       title="Para Cuándo?"
       description="Sección principal de Para Cuándo?"
+      hideBar={false}
     >
-      <div className="relative">
-        <div className="w-full h-[488px] bg-homeImageMobile sm:bg-homeImage bg-cover bg-no-repeat">
+      <div className="w-full h-[488px] bg-homeImageMobile sm:bg-homeImage bg-cover bg-no-repeat">
+        <div className="relative">
           <div className="flex flex-col gap-8 items-center justify-start pt-16">
             <Image
               src={paraCuandoLogoFull}
@@ -27,7 +28,7 @@ export default function Index() {
               height={0}
               style={{ width: '214px', height: '190px' }}
             />
-            <SearchBar className="max-w-md" />
+            <SearchBar className="flex max-w-md" />
             <div className="flex gap-2">
               <Link href={'/brands'}>
                 <Component1 text="Marcas y tiendas" />
@@ -42,7 +43,7 @@ export default function Index() {
           </div>
         </div>
       </div>
-      <main className="lg:mx-[170px]">
+      <main className="lg:mx-auto lg:px-[170px] max-w-7xl">
         {/* POPULARES */}
         <section className="px-5 min-[1200px]:px-0 my-14">
           <h2 className="h500-normal--24px pb-1">Populares en Querétaro</h2>

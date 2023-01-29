@@ -3,6 +3,7 @@ import brandsImage from '../public/brandsImage.png';
 
 import Image from 'next/image';
 import Link from 'next/link';
+import 'swiper/css';
 import Categories from '../components/Categories';
 import Component1 from '../components/Component1';
 import Layout from '../components/Layout';
@@ -21,7 +22,7 @@ export default function Brands() {
           placeholder={'blur'}
           className="object-cover w-full h-[204px] absolute -z-10 object-center brightness-50 md:brightness-100"
         />
-        <div className="w-full h-[204px] flex flex-col justify-center gap-1 items-start p-5 lg:pl-[170px]">
+        <div className="max-w-7xl mx-auto h-[204px] flex flex-col justify-center gap-1 items-start p-5 lg:pl-[170px] ">
           <h4 className="h500-normal--16px text-white">Home / Marcas</h4>
           <Title1>Marcas y tiendas</Title1>
           <p className="text-white h500-normal--16px leading-[18px]">
@@ -29,7 +30,7 @@ export default function Brands() {
           </p>
         </div>
       </header>
-      <main className="lg:mx-[170px]">
+      <main className="lg:mx-auto lg:px-[170px] max-w-7xl">
         <div className="flex flex-col-reverse lg:flex-row lg:items-end">
           <div className="px-5 pt-5 lg:pt-11 min-[1200px]:px-0 flex justify-center gap-2">
             <Link href={'/brands'}>
@@ -42,7 +43,7 @@ export default function Brands() {
               <Component1 text="Torneos" />
             </Link>
           </div>
-          <SearchBar className="sm:max-w-xs mx-auto mt-5 lg:ml-auto lg:mr-0" />
+          <SearchBar className="flex sm:max-w-xs mx-auto mt-5 lg:ml-auto lg:mr-0" />
         </div>
         {/* POPULARES */}
         <section className="px-5 min-[1200px]:px-0 my-14">
