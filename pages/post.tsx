@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { useState } from 'react';
 import addIcon from '../public/addIcon.png';
 import downArrow from '../public/arrow-down.png';
@@ -42,18 +43,24 @@ export default function Post() {
         </div>
       </div>
       <div className=" w-full h-auto  flex flex-col px-4">
-        <h3
-          className="m-3 text-[#1B4DB1] font-xl cursor-pointer"
-          onClick={returnStep}
-        >
-          Back
-        </h3>
+        {stepForm === 0 ? (
+          <Link href="/profile" className="m-3 font-xl">
+            Volver a perfil
+          </Link>
+        ) : (
+          <h3
+            className="m-3 text-[#1B4DB1] font-xl cursor-pointer"
+            onClick={returnStep}
+          >
+            Back
+          </h3>
+        )}
 
         <div className=" w-11/12 h-3 bg-primarygrayLight self-center rounded-md mt-3 mb-9">
           {stepForm === 0 ? (
-            <div className="w-3/5 h-3 bg-blue rounded-md"></div>
+            <div className="w-3/5 h-3 bg-primaryblue rounded-md"></div>
           ) : (
-            <div className="w-full h-3 bg-blue rounded-md"></div>
+            <div className="w-full h-3 bg-primaryblue rounded-md"></div>
           )}
         </div>
 
@@ -186,7 +193,7 @@ export default function Post() {
               <button
                 onClick={completeFormStep}
                 type="button"
-                className=" h-11 w-28 px-4 bg-blue m-8 rounded-3xl text-white self-center"
+                className=" h-11 w-28 px-4 bg-primaryblue m-8 rounded-3xl text-white self-center"
               >
                 Siguiente
               </button>
@@ -218,7 +225,7 @@ export default function Post() {
                   <input id="dropzone-file" type="file" className="hidden" />
                 </label>
               </div>
-              <button className=" h-11 w-28 px-4 bg-blue m-8 rounded-3xl text-white self-center">
+              <button className=" h-11 w-28 px-4 bg-primaryblue m-8 rounded-3xl text-white self-center">
                 Publicar
               </button>
             </section>
