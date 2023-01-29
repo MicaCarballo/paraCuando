@@ -5,10 +5,15 @@ interface Props {
   img: StaticImageData;
   text: string;
   titleEvent: string;
+  linkToEvent: string;
 }
 
-export default function SliderContent({ img, text, titleEvent }: Props) {
-  let linkToEvent = 'ladygaga.com';
+export default function SliderContent({
+  img,
+  text,
+  titleEvent,
+  linkToEvent,
+}: Props) {
   let numberOfVotes = "90'800'756";
 
   return (
@@ -34,7 +39,7 @@ export default function SliderContent({ img, text, titleEvent }: Props) {
           target="_blank"
           className="text-primaryblue h500-medium--14px absolute bottom-16 px-1"
         >
-          {linkToEvent}
+          {linkToEvent.slice(linkToEvent.indexOf('.') + 1)}
         </a>
         <span className="flex gap-2 items-center absolute bottom-9 px-2 h500-medium--14px">
           <svg

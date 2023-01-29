@@ -6,7 +6,11 @@ import profileimg from '../public/profileimg.png';
 //responsive desing tailwind
 export default function Profile() {
   return (
-    <Layout title="Para Cuando? - Perfil" description="Perfil de Para Cuando?">
+    <Layout
+      title="Para Cuando? - Perfil"
+      description="Perfil de Para Cuando?"
+      hideBar
+    >
       <div className="w-full h-32 bg-primaryblue relative ">
         <Image
           src={profileimg}
