@@ -5,14 +5,13 @@ import Image from 'next/image';
 import Layout from '../components/Layout';
 import SearchBar from '../components/SearchBar';
 
-import { Swiper, SwiperSlide } from 'swiper/react';
 // Import Swiper styles
 import Link from 'next/link';
 import React from 'react';
 import 'swiper/css';
+import Categories from '../components/Categories';
 import Component1 from '../components/Component1';
 import Slider from '../components/Slider/Slider';
-import styles from '../styles/categories-swiper.module.css';
 
 export default function Detail() {
   const [showMenuHeader, setShowMenuHeader] = React.useState(false);
@@ -90,9 +89,9 @@ export default function Detail() {
           )}
         </div>
 
-        <SearchBar className="m-0" />
+        <SearchBar className="m-0 max-w-sm" />
       </header>
-      <main className="py-20 lg:mx-[170px]">
+      <main className="py-20 lg:mx-auto lg:px-[170px] max-w-7xl">
         <section className="pb-14 min-[800px]:pb-28">
           <div className="px-10 min-[1200px]:p-0 min-[800px]:grid grid-cols-2 gap-5">
             <div className="max-w-xl">
@@ -103,7 +102,7 @@ export default function Detail() {
                 concierto con la temática de Lady gaga en Las Vegas.El concierto
                 con la temática.
               </p>
-              <a href="link" className="h500-medium--14px text-primary_blue">
+              <a href="link" className="h500-medium--14px text-primaryblue">
                 ladygaga.com
               </a>
               <span className="flex gap-2 items-center py-1 font-semibold">
@@ -122,7 +121,7 @@ export default function Detail() {
                 </svg>
                 {`${numberOfVotes} votos`}
               </span>
-              <button className="hidden min-[800px]:block bg-blue text-white text-lg font-normal rounded-full my-5 mx-auto py-2 w-full max-w-96">
+              <button className="hidden min-[800px]:block bg-primaryblue text-white text-lg font-normal rounded-full my-5 mx-auto py-2 w-full max-w-96">
                 Votar
               </button>
             </div>
@@ -147,44 +146,7 @@ export default function Detail() {
             Selecciona tus interes para brindarte sugerencia de acuerdo a tus
             gustos
           </p>
-          <Swiper
-            breakpoints={{
-              300: {
-                slidesPerView: 'auto',
-                enabled: true,
-              },
-              770: {
-                enabled: false,
-                normalizeSlideIndex: true,
-              },
-            }}
-            spaceBetween={10}
-            slidesPerView={'auto'}
-            direction={'horizontal'}
-            resistance={false}
-          >
-            <SwiperSlide className={styles.slide1}>
-              <Component1 text="Artistas mexicanos" />
-            </SwiperSlide>
-            <SwiperSlide className={styles.slide2}>
-              <Component1 text="Tiendas de ropa" />
-            </SwiperSlide>
-            <SwiperSlide className={styles.slide3}>
-              <Component1 text="Rock" />
-            </SwiperSlide>
-            <SwiperSlide className={styles.slide4}>
-              <Component1 text="Restaurantes" />
-            </SwiperSlide>
-            <SwiperSlide className={styles.slide5}>
-              <Component1 text="Restaurantes" />
-            </SwiperSlide>
-          </Swiper>
-          <Link
-            href={'/categories'}
-            className="py-4 block text-primary_blue w-max"
-          >
-            Ver todos los intereses
-          </Link>
+          <Categories />
         </section>
 
         {/* RECIENTES */}
