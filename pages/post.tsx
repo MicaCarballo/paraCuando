@@ -41,7 +41,7 @@ export default function Post() {
           </p>
         </div>
       </div>
-      <div className=" w-full h-auto  flex flex-col px-4">
+      <div className=" w-full h-auto  flex flex-col px-4 mx-auto my-auto ">
         <h3
           className="m-3 text-[#1B4DB1] font-xl cursor-pointer"
           onClick={returnStep}
@@ -49,7 +49,7 @@ export default function Post() {
           Back
         </h3>
 
-        <div className=" w-11/12 h-3 bg-primarygrayLight self-center rounded-md mt-3 mb-9">
+        <div className=" w-11/12 h-3 bg-primarygrayLight self-center rounded-md mt-3 mb-9 mx-24 ">
           {stepForm === 0 ? (
             <div className="w-3/5 h-3 bg-blue rounded-md"></div>
           ) : (
@@ -57,16 +57,16 @@ export default function Post() {
           )}
         </div>
 
-        <h2 className="m-2 text-2xl font-medium ">
+        <h2 className="m-2 text-2xl font-medium mx-24">
           {stepForm === 0 ? 'Publicacion' : 'Fotos'}
         </h2>
-        <p className="text-[#6E6A6C] ">
+        <p className="text-[#6E6A6C] mx-24 ">
           {stepForm === 0
             ? 'Información básica'
             : 'Selecciona  máximo tres fotos para crear una galería'}
         </p>
 
-        <form action="" className=" mt-11 flex flex-col gap-4">
+        <form action="" className=" mt-11 flex flex-col gap-4 max-w-2xl mx-28 ">
           {stepForm === 0 && (
             <section className="mt-11 flex flex-col gap-4">
               <label htmlFor="" className=" relative">
