@@ -197,14 +197,14 @@ export default function Post() {
               <div className="flex items-center p-4 gap-4 justify-center w-full h-full border border-solid border-x-primarygrayDark rounded-xl">
                 <label
                   htmlFor="dropzone-file"
-                  className="flex flex-col items-center justify-center rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 bg-primarygrayLight dark:hover:border-gray-500 dark:hover:bg-gray-600 h-32 w-2/6"
+                  className="flex flex-col items-center justify-center rounded-lg cursor-pointer dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 bg-primarygrayLight dark:hover:border-gray-500 dark:hover:bg-gray-600 h-32 w-2/6"
                 >
                   <Image src={addIcon} alt="add" />
                   <input id="dropzone-file" type="file" className="hidden" />
                 </label>
                 <label
                   htmlFor="dropzone-file"
-                  className="flex flex-col items-center justify-center rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 bg-primarygrayLight dark:hover:border-gray-500 dark:hover:bg-gray-600 h-32 w-2/6"
+                  className="flex flex-col items-center justify-center rounded-lg cursor-pointer dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 bg-primarygrayLight dark:hover:border-gray-500 dark:hover:bg-gray-600 h-32 w-2/6"
                 >
                   <Image src={addIcon} alt="add" />
                   <input id="dropzone-file" type="file" className="hidden" />
@@ -212,7 +212,7 @@ export default function Post() {
 
                 <label
                   htmlFor="dropzone-file"
-                  className="flex  items-center justify-center rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 bg-primarygrayLight dark:hover:border-gray-500 dark:hover:bg-gray-600 h-32 w-2/6"
+                  className="flex  items-center justify-center rounded-lg cursor-pointer dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 bg-primarygrayLight dark:hover:border-gray-500 dark:hover:bg-gray-600 h-32 w-2/6"
                 >
                   <Image src={addIcon} alt="add" />
                   <input id="dropzone-file" type="file" className="hidden" />
