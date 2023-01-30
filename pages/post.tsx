@@ -72,19 +72,19 @@ export default function Post() {
               <label htmlFor="" className=" relative">
                 <input
                   type="text"
-                  className="w-full h-11 border border-solid border-gray-700 rounded-md "
+                  className="w-full h-11 border border-solid border-gray-700 rounded-md p-5 "
                 />
                 <span className=" bg-white absolute left-2.5 top-5 px-2  transform -translate-y-7 -translate-4 text-[gray]">
                   Titulo de publicación
                 </span>
               </label>
               <div className=" flex flex-col gap-4 md:flex-row">
-                <div className=" w-full">
+                <div className=" w-full p-5">
                   <button
                     onClick={handleClickTypes}
                     className="w-full h-auto border border-solid border-t-primarygray rounded-md px-4 py-2 "
                   >
-                    <div className="  w-full flex place-content-between ">
+                    <div className="  w-full flex place-content-between p-5">
                       <span className="text-[#6E6A6C]">Tipo</span>
                       {openType ? (
                         <Image
@@ -101,7 +101,7 @@ export default function Post() {
                       )}
                     </div>
                     {openType && (
-                      <div className="w-full h-full  ">
+                      <div className="w-full h-full p-5  ">
                         <ul className=" flex place-content-start flex-col text-left gap-3 mt-3">
                           <li className=" text-primarygrayLight">
                             Marcas y tiendas
@@ -115,12 +115,12 @@ export default function Post() {
                     )}
                   </button>
                 </div>
-                <div className=" w-full">
+                <div className=" w-full p-5">
                   <button
                     onClick={handleClickCategories}
                     className="w-full h-auto border border-solid border-primarygray rounded-md px-4 py-2"
                   >
-                    <div className="  w-full flex place-content-between ">
+                    <div className="  w-full flex place-content-between p-5">
                       <span className=" text-[gray]">Categoría</span>
                       {openCategories ? (
                         <Image
@@ -137,7 +137,7 @@ export default function Post() {
                       )}
                     </div>
                     {openCategories && (
-                      <div className="w-full h-full  ">
+                      <div className="w-full h-full p-5 ">
                         <ul className=" flex place-content-start flex-col text-left gap-3 mt-3">
                           <li className=" text-primarygrayLight">
                             Ropa y accesorios
@@ -165,7 +165,7 @@ export default function Post() {
               <label htmlFor="" className=" relative">
                 <input
                   type="text"
-                  className="w-full h-24 border border-solid border-primarygrayLight rounded-md "
+                  className="w-full h-24 border border-solid border-primarygrayLight rounded-md p-5 "
                 />
                 <span
                   className=" bg-white absolute left-2.5 top-5 px-2  transform -translate-y-7 -translate-4  text-[gray]
@@ -177,7 +177,7 @@ export default function Post() {
               <label htmlFor="" className=" relative">
                 <input
                   type="text"
-                  className="w-full h-11 border border-solid border-primarygrayLight rounded-md "
+                  className="w-full h-11 border border-solid border-primarygrayLight rounded-md p-5"
                 />
                 <span className=" bg-white absolute left-2.5 top-5 px-2  transform -translate-y-7 -translate-4 text-[gray]">
                   Link de referencia
