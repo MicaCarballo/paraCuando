@@ -42,7 +42,7 @@ export default function Post() {
           </p>
         </div>
       </div>
-      <div className=" w-full h-auto  flex flex-col px-4">
+      <div className=" w-full h-auto  flex flex-col px-4 mx-auto my-auto ">
         <h3
           className="m-3 text-primaryblue font-xl cursor-pointer"
           onClick={returnStep}
@@ -50,7 +50,7 @@ export default function Post() {
           Back
         </h3>
 
-        <div className=" w-11/12 h-3 bg-primarygrayLight self-center rounded-md mt-3 mb-9">
+        <div className=" w-11/12 h-3 bg-primarygrayLight self-center rounded-md mt-3 mb-9 mx-24 ">
           {stepForm === 0 ? (
             <div className="w-3/5 h-3 bg-primaryblue rounded-md"></div>
           ) : (
@@ -58,34 +58,34 @@ export default function Post() {
           )}
         </div>
 
-        <h2 className="m-2 text-2xl font-medium ">
+        <h2 className="m-2 text-2xl font-medium mx-24">
           {stepForm === 0 ? 'Publicacion' : 'Fotos'}
         </h2>
-        <p className="text-[#6E6A6C] ">
+        <p className="text-[#6E6A6C] mx-24 ">
           {stepForm === 0
             ? 'Información básica'
             : 'Selecciona  máximo tres fotos para crear una galería'}
         </p>
 
-        <form action="" className=" mt-11 flex flex-col gap-4">
+        <form action="" className=" mt-11 flex flex-col gap-4 max-w-2xl mx-28 ">
           {stepForm === 0 && (
             <section className="mt-11 flex flex-col gap-4">
               <label htmlFor="" className=" relative">
                 <input
                   type="text"
-                  className="w-full h-11 border border-solid border-gray-700 rounded-md "
+                  className="w-full h-11 border border-solid border-gray-700 rounded-md p-5 "
                 />
                 <span className=" bg-white absolute left-2.5 top-5 px-2  transform -translate-y-7 -translate-4 text-[gray]">
                   Titulo de publicación
                 </span>
               </label>
               <div className=" flex flex-col gap-4 md:flex-row">
-                <div className=" w-full">
+                <div className=" w-full p-5">
                   <button
                     onClick={handleClickTypes}
                     className="w-full h-auto border border-solid border-t-primarygray rounded-md px-4 py-2 "
                   >
-                    <div className="  w-full flex place-content-between ">
+                    <div className="  w-full flex place-content-between p-5">
                       <span className="text-[#6E6A6C]">Tipo</span>
                       {openType ? (
                         <Image
@@ -102,7 +102,7 @@ export default function Post() {
                       )}
                     </div>
                     {openType && (
-                      <div className="w-full h-full  ">
+                      <div className="w-full h-full p-5  ">
                         <ul className=" flex place-content-start flex-col text-left gap-3 mt-3">
                           <li className=" text-primarygrayLight">
                             Marcas y tiendas
@@ -116,12 +116,12 @@ export default function Post() {
                     )}
                   </button>
                 </div>
-                <div className=" w-full">
+                <div className=" w-full p-5">
                   <button
                     onClick={handleClickCategories}
                     className="w-full h-auto border border-solid border-primarygray rounded-md px-4 py-2"
                   >
-                    <div className="  w-full flex place-content-between ">
+                    <div className="  w-full flex place-content-between p-5">
                       <span className=" text-[gray]">Categoría</span>
                       {openCategories ? (
                         <Image
@@ -138,7 +138,7 @@ export default function Post() {
                       )}
                     </div>
                     {openCategories && (
-                      <div className="w-full h-full  ">
+                      <div className="w-full h-full p-5 ">
                         <ul className=" flex place-content-start flex-col text-left gap-3 mt-3">
                           <li className=" text-primarygrayLight">
                             Ropa y accesorios
@@ -166,7 +166,7 @@ export default function Post() {
               <label htmlFor="" className=" relative">
                 <input
                   type="text"
-                  className="w-full h-24 border border-solid border-primarygrayLight rounded-md "
+                  className="w-full h-24 border border-solid border-primarygrayLight rounded-md p-5 "
                 />
                 <span
                   className=" bg-white absolute left-2.5 top-5 px-2  transform -translate-y-7 -translate-4  text-[gray]
@@ -178,7 +178,7 @@ export default function Post() {
               <label htmlFor="" className=" relative">
                 <input
                   type="text"
-                  className="w-full h-11 border border-solid border-primarygrayLight rounded-md "
+                  className="w-full h-11 border border-solid border-primarygrayLight rounded-md p-5"
                 />
                 <span className=" bg-white absolute left-2.5 top-5 px-2  transform -translate-y-7 -translate-4 text-[gray]">
                   Link de referencia
@@ -198,14 +198,14 @@ export default function Post() {
               <div className="flex items-center p-4 gap-4 justify-center w-full h-full border border-solid border-x-primarygrayDark rounded-xl">
                 <label
                   htmlFor="dropzone-file"
-                  className="flex flex-col items-center justify-center rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 bg-primarygrayLight dark:hover:border-gray-500 dark:hover:bg-gray-600 h-32 w-2/6"
+                  className="flex flex-col items-center justify-center rounded-lg cursor-pointer dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 bg-primarygrayLight dark:hover:border-gray-500 dark:hover:bg-gray-600 h-32 w-2/6"
                 >
                   <Image src={addIcon} alt="add" />
                   <input id="dropzone-file" type="file" className="hidden" />
                 </label>
                 <label
                   htmlFor="dropzone-file"
-                  className="flex flex-col items-center justify-center rounded-lg cursor-pointer  dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 bg-primarygrayLight dark:hover:border-gray-500 dark:hover:bg-gray-600 h-32 w-2/6"
+                  className="flex flex-col items-center justify-center rounded-lg cursor-pointer dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 bg-primarygrayLight dark:hover:border-gray-500 dark:hover:bg-gray-600 h-32 w-2/6"
                 >
                   <Image src={addIcon} alt="add" />
                   <input id="dropzone-file" type="file" className="hidden" />
@@ -213,7 +213,7 @@ export default function Post() {
 
                 <label
                   htmlFor="dropzone-file"
-                  className="flex  items-center justify-center rounded-lg cursor-pointer  dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 bg-primarygrayLight dark:hover:border-gray-500 dark:hover:bg-gray-600 h-32 w-2/6"
+                  className="flex  items-center justify-center rounded-lg cursor-pointer dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 bg-primarygrayLight dark:hover:border-gray-500 dark:hover:bg-gray-600 h-32 w-2/6"
                 >
                   <Image src={addIcon} alt="add" />
                   <input id="dropzone-file" type="file" className="hidden" />
