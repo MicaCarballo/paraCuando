@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { useState } from 'react';
 import addIcon from '../public/addIcon.png';
 import downArrow from '../public/arrow-down.png';
@@ -31,7 +32,10 @@ export default function Post() {
   return (
     <div className=" with-screen h-auto  md:flex  ">
       <div className=" h-80 w-full  bg-[#1B4DB1]   flex flex-col  md:h-screen md:w-1/3 md:pt-20">
-        <div className=" h-28 w-32 bg-paraCuandoTitleWhite bg-contain bg-no-repeat bg-center  self-center mt-6 mb-3 "></div>
+        <Link href="/home" className=" self-center">
+          <div className=" h-28 w-32 bg-paraCuandoTitleWhite bg-contain bg-no-repeat bg-center  self-center mt-6 mb-3 "></div>
+        </Link>
+
         <div className=" bg-loginDeskTitle1Small w-36 h-8 self-center"></div>
         <div className="flex flex-col p-4">
           <h3 className="mt-3 text-[#F3F243] ">¡Bienvenido, creador!</h3>
@@ -165,7 +169,7 @@ export default function Post() {
               <label htmlFor="" className=" relative">
                 <input
                   type="text"
-                  className="w-full h-24 border border-solid border-primarygrayLight rounded-md p-5 "
+                  className="w-full h-24 border border-solid border-primarygrayLight rounded-md "
                 />
                 <span
                   className=" bg-white absolute left-2.5 top-5 px-2  transform -translate-y-7 -translate-4  text-[gray]
@@ -177,7 +181,7 @@ export default function Post() {
               <label htmlFor="" className=" relative">
                 <input
                   type="text"
-                  className="w-full h-11 border border-solid border-primarygrayLight rounded-md p-5"
+                  className="w-full h-11 border border-solid border-primarygrayLight rounded-md "
                 />
                 <span className=" bg-white absolute left-2.5 top-5 px-2  transform -translate-y-7 -translate-4 text-[gray]">
                   Link de referencia

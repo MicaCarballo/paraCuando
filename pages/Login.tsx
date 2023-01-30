@@ -1,14 +1,19 @@
+import Link from 'next/link';
+
 const Login = () => {
   return (
     <div className=" md:flex flex-row-reverse w-screen">
-      <div className="w-screen h-screen flex  pt-16 flex-col md:w-2/4 ">
-        <div className="bg-paraCuandoTitle w-52 h-44 bg-no-repeat bg-cover flex self-center "></div>
-        <div className="h-96 p-6">
+      <div className="w-screen h-screen flex  pt-24 flex-col md:w-2/4  ">
+        <Link href="/home" className="  self-center">
+          <div className="bg-paraCuandoTitle w-52 h-44 bg-no-repeat bg-cover flex self-center "></div>
+        </Link>
+
+        <div className="h-96 p-6 max-w-xl mx-auto">
           <h1 className="font-semibold text-3xl">Login</h1>
           <p className="py-2.5 text-slate-500 text-base ">
             Login with the data you entered during your registration.
           </p>
-          <form action="" className="flex flex-col gap-2">
+          <form action="" className="flex flex-col gap-2 ">
             <label htmlFor="" className="text-[#1D1C3F] font-semibold">
               Email
             </label>
@@ -25,7 +30,7 @@ const Login = () => {
               placeholder="***********"
               className="h-11 rounded-sm p-2 border-gray-300 border-solid border"
             />
-            <button className="bg-blue-800 h-10 rounded p-2 text-white cursor-pointer">
+            <button className=" bg-primaryblue h-10 rounded p-2 text-white cursor-pointer">
               Log in
             </button>
           </form>
