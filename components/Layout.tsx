@@ -13,12 +13,14 @@ interface props {
   children: ReactNode;
   title?: string;
   description?: string;
+  hideBar?: boolean;
 }
 
 export default function Layout({
   children,
   title = 'Para Cuando?',
   description = 'Website oficial',
+  hideBar,
 }: props) {
   return (
     <>
@@ -28,10 +30,8 @@ export default function Layout({
       </Head>
       <div>
         <Header />
-        <main className="max-w-7xl mx-auto min-h-screen bg-slate-700">
-          {children}
-        </main>
-        <Footer />
+        <div className="mx-auto min-h-screen">{children}</div>
+        <Footer hideBar={hideBar} />
       </div>
     </>
   );
