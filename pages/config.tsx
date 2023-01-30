@@ -2,9 +2,12 @@ import Image from 'next/image';
 import Layout from '../components/Layout';
 import Rectangle183 from '../public/Rectangle183.png';
 import Vectormas from '../public/Vectormas.png';
-const Profilee = () => {
+const Config = () => {
   return (
-    <Layout title="Para Cuando? - Perfil" description="Perfil de Para Cuando?">
+    <Layout
+      title="Configuración de perfil"
+      description="Perfil de Para Cuando?"
+    >
       <div className="w-full h-32 bg-primaryblue relative">
         <div className="text-6xl translate-x-56 font-black text-[#F8F7FA]">
           Perfil
@@ -62,4 +65,4 @@ const Profilee = () => {
   );
 };
 
-export default Profilee;
+export default Config;
