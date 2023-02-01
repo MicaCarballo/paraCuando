@@ -4,7 +4,7 @@ const Login = () => {
   return (
     <div className=" md:flex flex-row-reverse w-screen">
       <div className="w-screen h-screen flex  pt-24 flex-col md:w-2/4  ">
-        <Link href="/home" className="  self-center">
+        <Link href="/" className="  self-center">
           <div className="bg-paraCuandoTitle w-52 h-44 bg-no-repeat bg-cover flex self-center "></div>
         </Link>
 

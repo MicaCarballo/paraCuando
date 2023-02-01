@@ -32,8 +32,11 @@ export default function Post() {
   return (
     <div className=" with-screen h-auto  md:flex  ">
       <div className=" h-80 w-full bg-primaryblue   flex flex-col  md:h-screen md:w-1/3 md:pt-20">
-        <div className=" h-28 w-32 bg-paraCuandoTitleWhite bg-contain bg-no-repeat bg-center  self-center mt-6 mb-3 "></div>
+        <Link href="/">
+          <div className=" h-28 w-32 bg-paraCuandoTitleWhite bg-contain bg-no-repeat bg-center  self-center mt-6 mb-3 "></div>
+        </Link>
         <div className=" bg-loginDeskTitle1Small w-36 h-8 self-center"></div>
+
         <div className="flex flex-col p-4">
           <h3 className="mt-3 text-[#F3F243] ">¡Bienvenido, creador!</h3>
           <p className="pt-4 pb-4 text-white">
