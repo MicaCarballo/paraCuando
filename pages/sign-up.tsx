@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-const SignIn = () => {
+const SignUp = () => {
   return (
     <div className=" md:flex flex-row-reverse w-screen">
       <div className="w-screen h-screen flex  pt-16 flex-col md:w-2/4 ">
@@ -73,4 +73,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default SignUp;
