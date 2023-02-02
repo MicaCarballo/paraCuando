@@ -24,7 +24,7 @@ export default function Profile() {
         <Component1 text="Mis votos"></Component1>
         <Component1 text="Mis publicaciones"></Component1>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 w-3/4 h-2/3 m-auto pt-16 pb-40 gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-3 w-fit h-2/3 m-auto pt-16 pb-40 justify-items-center gap-5">
         <EventCardDesktop></EventCardDesktop>
         <EventCardDesktop></EventCardDesktop>
         <EventCardDesktop></EventCardDesktop>
