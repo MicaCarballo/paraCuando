@@ -8,7 +8,6 @@ import Categories from '../components/Categories';
 import Component1 from '../components/Component1';
 import Layout from '../components/Layout';
 import SearchBar from '../components/SearchBar';
-import Slider from '../components/Slider/Slider';
 import Title1 from '../components/Texts/Title1';
 
 export default function Tournaments() {
@@ -52,7 +51,7 @@ export default function Tournaments() {
           <p className="h400-normal--16px pb-5">
             Lo que las personas piden más
           </p>
-          <Slider />
+          {/* <Slider /> */}
         </section>
         {/* SUGERENCIAS */}
         <section className="px-5 min-[1200px]:px-0 my-14">
@@ -60,7 +59,7 @@ export default function Tournaments() {
           <p className="h400-normal--16px pb-5">
             Publicaciones que podrías colaborar
           </p>
-          <Slider />
+          {/* <Slider /> */}
         </section>
         {/* CATEGORIAS */}
         <section className="my-14 w-full relative px-5 py-6 mb-16 bg-primarygrayLighter min-[800px]:px-10">
@@ -77,7 +76,7 @@ export default function Tournaments() {
           <p className="h400-normal--16px pb-5">
             Las personas últimamente están hablando de esto
           </p>
-          <Slider />
+          {/* <Slider /> */}
         </section>
       </main>
     </Layout>
