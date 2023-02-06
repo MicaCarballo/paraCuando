@@ -11,7 +11,6 @@ import React from 'react';
 import 'swiper/css';
 import Categories from '../components/Categories';
 import Component1 from '../components/Component1';
-import Slider from '../components/Slider/Slider';
 
 export default function Detail() {
   const [showMenuHeader, setShowMenuHeader] = React.useState(false);
@@ -155,7 +154,7 @@ export default function Detail() {
           <p className="h400-normal--16px pb-5">
             Las personas últimamente están hablando de esto
           </p>
-          <Slider />
+          {/* <Slider /> */}
         </section>
       </main>
     </Layout>
