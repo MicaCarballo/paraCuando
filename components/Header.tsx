@@ -7,9 +7,11 @@ interface Props {
   isLogged?: ReactNode;
 }
 
-const Header = ({ isLogged = true }: Props) => {
+const Header = ({ isLogged = false }: Props) => {
   const [showMenu, setShowMenu] = React.useState(false);
   const email = 'email@test.com';
+
+  // const changeStatus = useUserInfo().then((res) => res.data);
 
   return (
     <>

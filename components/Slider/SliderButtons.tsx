@@ -1,13 +1,12 @@
-import { ReactNode, useState } from 'react';
+import { useState } from 'react';
 import { useSwiper } from 'swiper/react';
 
 interface Props {
-  children: ReactNode;
   back: boolean;
   next: boolean;
 }
 
-export default function SliderButtons({ children, back, next }: Props) {
+export default function SliderButtons({ back, next }: Props) {
   const [hiddenBack, setHiddenBack] = useState(true);
   const [hiddenNext, setHiddenNext] = useState(false);
 

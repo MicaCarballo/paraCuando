@@ -1,21 +1,32 @@
 //* Images
-import detailImage from '../public/ladyGaga.png';
+import detailImage from '../../public/ladyGaga.png';
 
 import Image from 'next/image';
-import Layout from '../components/Layout';
-import SearchBar from '../components/SearchBar';
+import Layout from '../../components/Layout';
+import SearchBar from '../../components/SearchBar';
 
 // Import Swiper styles
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import React from 'react';
 import 'swiper/css';
-import Categories from '../components/Categories';
-import Component1 from '../components/Component1';
+import Categories from '../../components/Categories';
+import Component1 from '../../components/Component1';
+import Slider from '../../components/Slider/Slider';
+import { useCategories } from '../../lib/services/categories.services';
+import { usePublications } from '../../lib/services/publications.services';
 
 export default function Detail() {
+  const { data: publications } = usePublications();
+  const { data: categories } = useCategories();
+  const router = useRouter();
+  const { event_id } = router.query;
+
   const [showMenuHeader, setShowMenuHeader] = React.useState(false);
 
   let numberOfVotes = "9'000'000";
+
+  const detail = publications?.results.find((detail) => detail.id == event_id);
 
   return (
     <Layout
@@ -25,15 +36,11 @@ export default function Detail() {
       <header className="flex justify-evenly items-center gap-2 pl-10 pr-5 py-5 shadow-lg ">
         {/* RESPONSIVE - HIGHER DEVICES */}
         <div className="hidden min-[800px]:flex gap-1">
-          <Link href={'/brands'}>
-            <Component1 text="Marcas y tiendas" />
-          </Link>
-          <Link href={'/artists'}>
-            <Component1 text="Artistas y Conciertos" />
-          </Link>
-          <Link href={'/tournaments'}>
-            <Component1 text="Torneos" />
-          </Link>
+          {categories?.map((category) => (
+            <Link href={`/category/${category.id}`} key={category.id}>
+              <Component1 text={category.name} />
+            </Link>
+          ))}
         </div>
 
         {/* RESPONSIVE - SMALLER DEVICES */}
@@ -81,9 +88,11 @@ export default function Detail() {
                 showMenuHeader ? 'opacity-100' : 'opacity-0 pointer-events-none'
               }`}
             >
-              <Link href={'/brands'}>Marcas y tiendas</Link>
-              <Link href={'/artists'}>Artistas y Conciertos</Link>
-              <Link href={'/tournaments'}>Torneos</Link>
+              {categories?.map((category) => (
+                <Link href={`/category/${category.id}`} key={category.id}>
+                  {category.name}
+                </Link>
+              ))}
             </div>
           )}
         </div>
@@ -95,14 +104,15 @@ export default function Detail() {
           <div className="px-10 min-[1200px]:p-0 min-[800px]:grid grid-cols-2 gap-5">
             <div className="max-w-xl">
               <h4 className="h500-normal--16px">Artista / Pop / Rock</h4>
-              <h1 className="h900-normal--48px">Concierto de Lady Gaga</h1>
+              <h1 className="h900-normal--48px">{detail && detail.title}</h1>
               <p className="h400-normal--16px py-6">
-                El concierto con la temática de Lady gaga en Las Vegas. El
-                concierto con la temática de Lady gaga en Las Vegas.El concierto
-                con la temática.
+                {detail && detail.description}
               </p>
-              <a href="link" className="h500-medium--14px text-primaryblue">
-                ladygaga.com
+              <a
+                href={detail?.content}
+                className="h500-medium--14px text-primaryblue"
+              >
+                {detail?.content.slice(detail.content.indexOf('.') + 1)}
               </a>
               <span className="flex gap-2 items-center py-1 font-semibold">
                 <svg
@@ -133,7 +143,7 @@ export default function Detail() {
               style={{ width: '100%', height: '100%' }}
               className="object-cover"
             />
-            <button className="block min-[800px]:hidden bg-blue text-white text-lg font-normal rounded-full my-5 py-2 w-full min-[800px]:w-96">
+            <button className="block min-[800px]:hidden bg-primaryblue text-white text-lg font-normal rounded-full my-5 py-2 w-full min-[800px]:w-96">
               Votar
             </button>
           </div>
@@ -154,7 +164,7 @@ export default function Detail() {
           <p className="h400-normal--16px pb-5">
             Las personas últimamente están hablando de esto
           </p>
-          {/* <Slider /> */}
+          <Slider publications={publications?.results || []} />
         </section>
       </main>
     </Layout>

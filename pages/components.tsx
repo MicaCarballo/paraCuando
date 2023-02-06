@@ -7,7 +7,6 @@ import Header from '../components/Header';
 import LikedIcon from '../components/LikedIcon';
 
 import SearchBar from '../components/SearchBar';
-import Slider from '../components/Slider/Slider';
 
 export default function Components() {
   const [isLogged, setIsLogged] = React.useState(true);
@@ -45,7 +44,6 @@ export default function Components() {
       <br />
       <h3>7. LikedIcon.tsx</h3>
       <LikedIcon />
-
       <br />
       <br />
       <br />
@@ -55,7 +53,7 @@ export default function Components() {
       <br />
       <br />
       <h3>10. Slider.tsx </h3>
-      <Slider />
+      {/* <Slider /> */}
     </div>
   );
 }

@@ -1,6 +1,27 @@
+import cookie from 'js-cookie';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { login } from '../../lib/services/auth.services';
+
+type Inputs = {
+  email: string;
+  password: string;
+};
 
 const Login = () => {
+  const { register, handleSubmit } = useForm<Inputs>();
+  const router = useRouter();
+  const onSubmit: SubmitHandler<Inputs> = async (data) => {
+    login(data)
+      .then((res) => {
+        cookie.set('token', res.data.token[0].public);
+        router.push('/profile');
+      })
+      .catch((err) => console.log(err));
+    console.log(data);
+  };
+
   return (
     <div className=" md:flex flex-row-reverse w-screen">
       <div className="w-screen h-screen flex  pt-24 flex-col md:w-2/4  ">
@@ -13,27 +34,37 @@ const Login = () => {
           <p className="py-2.5 text-slate-500 text-base ">
             Login with the data you entered during your registration.
           </p>
-          <form action="" className="flex flex-col gap-2 ">
-            <label htmlFor="" className="text-[#1D1C3F] font-semibold">
+
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            action=""
+            className="flex flex-col gap-2 "
+          >
+            <label htmlFor="email" className="text-[#1D1C3F] font-semibold">
               Email
             </label>
             <input
+              id="email"
               type="email"
               placeholder="john.doe@gmail.com"
               className="h-11 rounded-sm p-2 border-gray-300 border-solid border"
+              {...register('email', { required: true })}
             />
-            <label htmlFor="" className="text-[#1D1C3F] font-semibold">
+            <label htmlFor="password" className="text-[#1D1C3F] font-semibold">
               Password
             </label>
             <input
+              id="password"
               type="password"
               placeholder="***********"
               className="h-11 rounded-sm p-2 border-gray-300 border-solid border"
+              {...register('password', { required: true })}
             />
             <button className=" bg-primaryblue h-10 rounded p-2 text-white cursor-pointer">
               Log in
             </button>
           </form>
+
           <div className="text-center flex justify-center">
             <p className="w-40 flex self-center text-base m-2 cursor-pointer text-slate-500">
               Did you forget your password?
