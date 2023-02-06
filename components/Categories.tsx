@@ -11,10 +11,12 @@ const Categories = () => {
           300: {
             slidesPerView: 'auto',
             enabled: true,
+            grabCursor: true,
           },
           770: {
             enabled: false,
             normalizeSlideIndex: true,
+            grabCursor: false,
           },
         }}
         spaceBetween={10}
