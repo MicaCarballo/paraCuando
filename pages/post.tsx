@@ -32,20 +32,8 @@ export default function Post() {
       .catch((err) => console.log(err));
   };
 
-  const [openType, setopenType] = useState(false);
-  const [openCategories, setopenCategories] = useState(false);
   const [stepForm, setstepForm] = useState(0);
 
-  const handleClickTypes = (event: { preventDefault: () => any }) => {
-    event.preventDefault(), setopenType(!openType);
-  };
-
-  const handleClickCategories = (event: {
-    preventDefault: () => void;
-  }): void => {
-    event.preventDefault();
-    setopenCategories(!openCategories);
-  };
   const completeFormStep = () => {
     setstepForm((cur) => cur + 1);
   };
