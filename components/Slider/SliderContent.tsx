@@ -1,11 +1,13 @@
-import Image, { StaticImageData } from 'next/image';
+import Image from 'next/image';
+import Link from 'next/link';
 import LikedIcon from '../LikedIcon';
 
 interface Props {
-  img: StaticImageData;
+  img: string;
   text: string;
   titleEvent: string;
   linkToEvent: string;
+  event_id: string;
 }
 
 export default function SliderContent({
@@ -13,6 +15,7 @@ export default function SliderContent({
   text,
   titleEvent,
   linkToEvent,
+  event_id,
 }: Props) {
   let numberOfVotes = "90'800'756";
 
@@ -23,15 +26,19 @@ export default function SliderContent({
     >
       <Image
         src={img}
-        width={0}
-        height={0}
+        width={300}
+        height={240}
         priority={true}
         alt="sliderImg"
-        style={{ width: '300px', height: 'auto' }}
       />
       <LikedIcon className="absolute top-52 right-6" />
       <div className="p-3 px-5">
-        <h3 className="h600-medium--20px">{titleEvent}</h3>
+        <Link
+          href={`/event/${event_id}`}
+          className="h600-medium--20px hover:underline"
+        >
+          {titleEvent}
+        </Link>
         <p className="h400-medium--15px h-24 overflow-hidden">{text}</p>
         <a
           href={`${linkToEvent}`}

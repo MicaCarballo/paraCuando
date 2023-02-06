@@ -1,11 +1,35 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { useCategories } from '../lib/services/categories.services';
+import { useTags } from '../lib/services/tags.services';
+import { createPublication } from '../lib/services/user.services';
 import addIcon from '../public/addIcon.png';
-import downArrow from '../public/arrow-down.png';
-import upArrow from '../public/arrow-up.png';
+
+type Inputs = {
+  title: string;
+  tags: string;
+  publication_type_id: string;
+  description: string;
+  urlShare: string;
+};
 
 export default function Post() {
+  const { register, handleSubmit, reset } = useForm<Inputs>();
+
+  const { data: tags } = useTags();
+  const { data: categories } = useCategories();
+
+  const onSubmit: SubmitHandler<Inputs> = async (data) => {
+    await createPublication(data)
+      .then((res) => {
+        alert('Se ha creado la publicación!');
+        reset();
+      })
+      .catch((err) => console.log(err));
+  };
+
   const [openType, setopenType] = useState(false);
   const [openCategories, setopenCategories] = useState(false);
   const [stepForm, setstepForm] = useState(0);
@@ -70,20 +94,40 @@ export default function Post() {
             : 'Selecciona  máximo tres fotos para crear una galería'}
         </p>
 
-        <form action="" className=" mt-11 flex flex-col gap-4 max-w-2xl mx-28 ">
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className=" mt-11 flex flex-col gap-4 max-w-2xl mx-28 "
+        >
           {stepForm === 0 && (
             <section className="mt-11 flex flex-col gap-4">
               <label htmlFor="" className=" relative">
                 <input
                   type="text"
                   className="w-full h-11 border border-solid border-gray-700 rounded-md p-5 "
+                  {...register('title')}
                 />
                 <span className=" bg-white absolute left-2.5 top-5 px-2  transform -translate-y-7 -translate-4 text-[gray]">
                   Titulo de publicación
                 </span>
               </label>
               <div className=" flex flex-col gap-4 md:flex-row">
-                <div className=" w-full p-5">
+                <div>
+                  <select {...register('tags')}>
+                    {tags?.map((tag) => (
+                      <option value={tag.id} key={tag.id}>
+                        {tag.name}
+                      </option>
+                    ))}
+                  </select>
+                  <select {...register('publication_type_id')}>
+                    {categories?.map((category) => (
+                      <option value={category.id} key={category.id}>
+                        {category.name}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                {/* <div className=" w-full p-5">
                   <button
                     onClick={handleClickTypes}
                     className="w-full h-auto border border-solid border-t-primarygray rounded-md px-4 py-2 "
@@ -118,8 +162,8 @@ export default function Post() {
                       </div>
                     )}
                   </button>
-                </div>
-                <div className=" w-full p-5">
+                </div> */}
+                {/* <div className=" w-full p-5">
                   <button
                     onClick={handleClickCategories}
                     className="w-full h-auto border border-solid border-primarygray rounded-md px-4 py-2"
@@ -164,12 +208,13 @@ export default function Post() {
                       </div>
                     )}
                   </button>
-                </div>
+                </div> */}
               </div>
               <label htmlFor="" className=" relative">
                 <input
                   type="text"
                   className="w-full h-24 border border-solid border-primarygrayLight rounded-md p-5 "
+                  {...register('description')}
                 />
                 <span
                   className=" bg-white absolute left-2.5 top-5 px-2  transform -translate-y-7 -translate-4  text-[gray]
@@ -182,17 +227,18 @@ export default function Post() {
                 <input
                   type="text"
                   className="w-full h-11 border border-solid border-primarygrayLight rounded-md p-5"
+                  {...register('urlShare')}
                 />
                 <span className=" bg-white absolute left-2.5 top-5 px-2  transform -translate-y-7 -translate-4 text-[gray]">
                   Link de referencia
                 </span>
               </label>
               <button
-                onClick={completeFormStep}
-                type="button"
+                // onClick={completeFormStep}
+                type="submit"
                 className=" h-11 w-28 px-4 bg-primaryblue m-8 rounded-3xl text-white self-center"
               >
-                Siguiente
+                Crear Publicación
               </button>
             </section>
           )}

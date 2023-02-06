@@ -10,8 +10,21 @@ import Categories from '../components/Categories';
 import Component1 from '../components/Component1';
 import SearchBar from '../components/SearchBar';
 import Slider from '../components/Slider/Slider';
+import { useCategories } from '../lib/services/categories.services';
+import { usePublications } from '../lib/services/publications.services';
 
 export default function Index() {
+  const { data: publications, error, isLoading } = usePublications();
+  const { data: categories } = useCategories();
+  console.log(publications);
+
+  // if (isLoading) {
+  //   return <div>Cargando . . .</div>;
+  // }
+  // if (error) {
+  //   return <div>Ocurrió un error</div>;
+  // }
+
   return (
     <Layout
       title="Para Cuándo?"
@@ -30,15 +43,11 @@ export default function Index() {
             />
             <SearchBar className="flex max-w-md" />
             <div className="flex gap-2">
-              <Link href={'/brands'}>
-                <Component1 text="Marcas y tiendas" />
-              </Link>
-              <Link href={'/artists'}>
-                <Component1 text="Artistas y Conciertos" />
-              </Link>
-              <Link href={'/tournaments'}>
-                <Component1 text="Torneos" />
-              </Link>
+              {categories?.map((category) => (
+                <Link href={`/category/${category.id}`} key={category.id}>
+                  <Component1 text={category.name} />
+                </Link>
+              ))}
             </div>
           </div>
         </div>
@@ -50,7 +59,7 @@ export default function Index() {
           <p className="h400-normal--16px pb-5">
             Lo que las personas piden más
           </p>
-          <Slider />
+          <Slider publications={publications?.results || []} />
         </section>
 
         {/* SUGERENCIAS */}
@@ -59,7 +68,7 @@ export default function Index() {
           <p className="h400-normal--16px pb-5">
             Publicaciones que podrías colaborar
           </p>
-          <Slider />
+          <Slider publications={publications?.results || []} />
         </section>
 
         {/* CATEGORIAS */}
@@ -78,7 +87,7 @@ export default function Index() {
           <p className="h400-normal--16px pb-5">
             Las personas últimamente están hablando de esto
           </p>
-          <Slider />
+          <Slider publications={publications?.results || []} />
         </section>
       </main>
     </Layout>

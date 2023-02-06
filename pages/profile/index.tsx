@@ -1,8 +1,8 @@
 import Image from 'next/image';
-import Component1 from '../components/Component1';
-import EventCardDesktop from '../components/EventCardDesktop';
-import Layout from '../components/Layout';
-import profileimg from '../public/profileimg.png';
+import Component1 from '../../components/Component1';
+import EventCardDesktop from '../../components/EventCardDesktop';
+import Layout from '../../components/Layout';
+import profileimg from '../../public/profileimg.png';
 //responsive desing tailwind
 export default function Profile() {
   return (
