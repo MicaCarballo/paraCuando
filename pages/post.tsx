@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useCategories } from '../lib/services/categories.services';
@@ -17,6 +18,7 @@ type Inputs = {
 
 export default function Post() {
   const { register, handleSubmit, reset } = useForm<Inputs>();
+  const router = useRouter();
 
   const { data: tags } = useTags();
   const { data: categories } = useCategories();
@@ -54,226 +56,211 @@ export default function Post() {
   };
 
   return (
-    <div className=" with-screen h-auto  md:flex  ">
-      <div className=" h-80 w-full bg-primaryblue   flex flex-col  md:h-screen md:w-1/3 md:pt-20">
-        <Link href="/">
-          <div className=" h-28 w-32 bg-paraCuandoTitleWhite bg-contain bg-no-repeat bg-center  self-center mt-6 mb-3 "></div>
+    <div className=" with-screen h-screen md:grid grid-cols-[1fr_4fr] ">
+      <div className=" h-[320px] w-full bg-primaryblue flex flex-col justify-around items-start md:h-screen md:w-full">
+        <Link href="/" className="flex flex-col relative mt-20 mx-auto">
+          <img
+            src="/paraCuandoCreatePubl.svg"
+            alt="aaa"
+            className="bg-center self-center"
+          />
+          <img
+            src="/paraCuandoCreatePubl2.svg"
+            alt="aaa"
+            className="absolute -bottom-4"
+          ></img>
         </Link>
-        <div className=" bg-loginDeskTitle1Small w-36 h-8 self-center"></div>
 
-        <div className="flex flex-col p-4">
-          <h3 className="mt-3 text-[#F3F243] ">¡Bienvenido, creador!</h3>
+        <div className="flex flex-col p-7">
+          <h3 className="mt-3 text-primaryyellow h500-normal--24px">
+            ¡Bienvenido, creador!
+          </h3>
           <p className="pt-4 pb-4 text-white">
             A continuación puedes completar la info de la marca, artista o
             torneo que quieres cerca.
           </p>
         </div>
+        <Link href="/help" className="hidden md:block text-white mt-10 ml-7">
+          Ayuda
+        </Link>
       </div>
-      <div className=" w-full h-auto  flex flex-col px-4 mx-auto my-auto ">
-        <h3
-          className="m-3 text-primaryblue font-xl cursor-pointer"
-          onClick={returnStep}
+      <div className="sm:w-full h-screen flex flex-col mx-auto my-auto relative">
+        <button
+          className="m-5 md:m-0 md:absolute top-14 left-14 text-primaryblue text-xl w-10"
+          onClick={stepForm != 0 ? returnStep : () => router.back()}
         >
           Back
-        </h3>
+        </button>
+        <div className="md:w-3/4 xl:w-3/5 md:mx-auto flex flex-col justify-center md:h-screen">
+          <div className=" w-11/12 md:w-full h-3 bg-primarygrayLight self-center rounded-md mt-3 mb-9 md:mb-16 mx-24 ">
+            <div
+              className={`${
+                stepForm === 0 ? 'w-3/5' : 'w-full'
+              } transition-[width] h-3 bg-primaryblue rounded-md`}
+            ></div>
+          </div>
+          <div className="mx-4">
+            <h2 className="my-2 text-2xl font-medium">
+              {stepForm === 0 ? 'Publicacion' : 'Fotos'}
+            </h2>
+            <p className="text-[#6E6A6C] ">
+              {stepForm === 0
+                ? 'Información básica'
+                : 'Selecciona  máximo tres fotos para crear una galería'}
+            </p>
 
-        <div className=" w-11/12 h-3 bg-primarygrayLight self-center rounded-md mt-3 mb-9 mx-24 ">
-          {stepForm === 0 ? (
-            <div className="w-3/5 h-3 bg-primaryblue rounded-md"></div>
-          ) : (
-            <div className="w-full h-3 bg-primaryblue rounded-md"></div>
-          )}
-        </div>
-
-        <h2 className="m-2 text-2xl font-medium mx-24">
-          {stepForm === 0 ? 'Publicacion' : 'Fotos'}
-        </h2>
-        <p className="text-[#6E6A6C] mx-24 ">
-          {stepForm === 0
-            ? 'Información básica'
-            : 'Selecciona  máximo tres fotos para crear una galería'}
-        </p>
-
-        <form
-          onSubmit={handleSubmit(onSubmit)}
-          className=" mt-11 flex flex-col gap-4 max-w-2xl mx-28 "
-        >
-          {stepForm === 0 && (
-            <section className="mt-11 flex flex-col gap-4">
-              <label htmlFor="" className=" relative">
-                <input
-                  type="text"
-                  className="w-full h-11 border border-solid border-gray-700 rounded-md p-5 "
-                  {...register('title')}
-                />
-                <span className=" bg-white absolute left-2.5 top-5 px-2  transform -translate-y-7 -translate-4 text-[gray]">
-                  Titulo de publicación
-                </span>
-              </label>
-              <div className=" flex flex-col gap-4 md:flex-row">
-                <div>
-                  <select {...register('tags')}>
-                    {tags?.map((tag) => (
-                      <option value={tag.id} key={tag.id}>
-                        {tag.name}
+            <form
+              onSubmit={handleSubmit(onSubmit)}
+              className="flex flex-col gap-4 mt-10"
+            >
+              {stepForm === 0 && (
+                <section className="flex flex-col gap-4">
+                  <label htmlFor="title" className=" relative">
+                    <input
+                      id="title"
+                      type="text"
+                      className="w-full h-12 border border-borderGray rounded-[11px] p-5"
+                      required
+                      {...register('title')}
+                    />
+                    <span className=" bg-white absolute left-2.5 px-2 transform -translate-y-3 text-borderGray">
+                      Titulo de publicación
+                    </span>
+                  </label>
+                  <div className="flex flex-col gap-4 sm:flex-row">
+                    <select
+                      {...register('tags')}
+                      className="w-full h-12 border border-borderGray rounded-[11px] pl-2"
+                      defaultValue={''}
+                      required
+                    >
+                      <option
+                        value={''}
+                        disabled
+                        hidden
+                        className="text-borderGray"
+                      >
+                        Tipo
                       </option>
-                    ))}
-                  </select>
-                  <select {...register('publication_type_id')}>
-                    {categories?.map((category) => (
-                      <option value={category.id} key={category.id}>
-                        {category.name}
+                      {tags?.map((tag) => (
+                        <option
+                          value={tag.id}
+                          key={tag.id}
+                          className="text-borderGray text-xl"
+                        >
+                          {tag.name}
+                        </option>
+                      ))}
+                    </select>
+                    <select
+                      {...register('publication_type_id')}
+                      className="w-full h-12 border border-borderGray rounded-[11px] pl-2"
+                      defaultValue={''}
+                      required
+                    >
+                      <option
+                        value=""
+                        disabled
+                        hidden
+                        className="text-borderGray"
+                      >
+                        Categoría
                       </option>
-                    ))}
-                  </select>
-                </div>
-                {/* <div className=" w-full p-5">
-                  <button
-                    onClick={handleClickTypes}
-                    className="w-full h-auto border border-solid border-t-primarygray rounded-md px-4 py-2 "
-                  >
-                    <div className="  w-full flex place-content-between p-5">
-                      <span className="text-[#6E6A6C]">Tipo</span>
-                      {openType ? (
-                        <Image
-                          className=" h-2.5 w-5 self-center"
-                          src={upArrow}
-                          alt="downArrow"
-                        />
-                      ) : (
-                        <Image
-                          className=" h-2.5 w-5 self-center"
-                          src={downArrow}
-                          alt="downArrow"
-                        />
-                      )}
-                    </div>
-                    {openType && (
-                      <div className="w-full h-full p-5  ">
-                        <ul className=" flex place-content-start flex-col text-left gap-3 mt-3">
-                          <li className=" text-primarygrayLight">
-                            Marcas y tiendas
-                          </li>
-                          <li className=" text-primarygrayLight">
-                            Artistas y conciertos
-                          </li>
-                          <li className=" text-primarygrayLight">Torneos</li>
-                        </ul>
-                      </div>
-                    )}
-                  </button>
-                </div> */}
-                {/* <div className=" w-full p-5">
-                  <button
-                    onClick={handleClickCategories}
-                    className="w-full h-auto border border-solid border-primarygray rounded-md px-4 py-2"
-                  >
-                    <div className="  w-full flex place-content-between p-5">
-                      <span className=" text-[gray]">Categoría</span>
-                      {openCategories ? (
-                        <Image
-                          className=" h-2.5 w-5 self-center"
-                          src={upArrow}
-                          alt="downArrow"
-                        />
-                      ) : (
-                        <Image
-                          className=" h-2.5 w-5 self-center"
-                          src={downArrow}
-                          alt="downArrow"
-                        />
-                      )}
-                    </div>
-                    {openCategories && (
-                      <div className="w-full h-full p-5 ">
-                        <ul className=" flex place-content-start flex-col text-left gap-3 mt-3">
-                          <li className=" text-primarygrayLight">
-                            Ropa y accesorios
-                          </li>
-                          <li className=" text-primarygrayLight">Deportes</li>
-                          <li className=" text-primarygrayLight">Conciertos</li>
-                          <li className=" text-primarygrayLight">
-                            Meet & Greet
-                          </li>
-                          <li className=" text-primarygrayLight">E-sport</li>
-                          <li className=" text-primarygrayLight">Pop / Rock</li>
-                          <li className=" text-primarygrayLight">Tecnología</li>
-                          <li className=" text-primarygrayLight">
-                            Hogar / Decoración
-                          </li>
-                          <li className=" text-primarygrayLight">
-                            Abastecimiento
-                          </li>
-                        </ul>
-                      </div>
-                    )}
-                  </button>
-                </div> */}
-              </div>
-              <label htmlFor="" className=" relative">
-                <input
-                  type="text"
-                  className="w-full h-24 border border-solid border-primarygrayLight rounded-md p-5 "
-                  {...register('description')}
-                />
-                <span
-                  className=" bg-white absolute left-2.5 top-5 px-2  transform -translate-y-7 -translate-4  text-[gray]
+                      {categories?.map((category) => (
+                        <option
+                          value={category.id}
+                          key={category.id}
+                          className="text-borderGray text-xl"
+                        >
+                          {category.name}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                  <label htmlFor="description" className=" relative">
+                    <textarea
+                      id="description"
+                      className="w-full h-24 border border-solid border-borderGray rounded-md p-5 resize-none"
+                      {...register('description')}
+                      required
+                    />
+                    <span
+                      className=" bg-white absolute left-2.5 top-5 px-2  transform -translate-y-7 -translate-4  text-[gray]
                   "
-                >
-                  ¿Por qué lo recomiendas?
-                </span>
-              </label>
-              <label htmlFor="" className=" relative">
-                <input
-                  type="text"
-                  className="w-full h-11 border border-solid border-primarygrayLight rounded-md p-5"
-                  {...register('urlShare')}
-                />
-                <span className=" bg-white absolute left-2.5 top-5 px-2  transform -translate-y-7 -translate-4 text-[gray]">
-                  Link de referencia
-                </span>
-              </label>
-              <button
-                // onClick={completeFormStep}
-                type="submit"
-                className=" h-11 w-28 px-4 bg-primaryblue m-8 rounded-3xl text-white self-center"
-              >
-                Crear Publicación
-              </button>
-            </section>
-          )}
-          {stepForm === 1 && (
-            <section className="mt-5 flex flex-col gap-4  mb-16 w-full">
-              <div className="flex items-center p-4 gap-4 justify-center w-full h-full border border-solid border-x-primarygrayDark rounded-xl">
-                <label
-                  htmlFor="dropzone-file"
-                  className="flex flex-col items-center justify-center rounded-lg cursor-pointer dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 bg-primarygrayLight dark:hover:border-gray-500 dark:hover:bg-gray-600 h-32 w-2/6"
-                >
-                  <Image src={addIcon} alt="add" />
-                  <input id="dropzone-file" type="file" className="hidden" />
-                </label>
-                <label
-                  htmlFor="dropzone-file"
-                  className="flex flex-col items-center justify-center rounded-lg cursor-pointer dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 bg-primarygrayLight dark:hover:border-gray-500 dark:hover:bg-gray-600 h-32 w-2/6"
-                >
-                  <Image src={addIcon} alt="add" />
-                  <input id="dropzone-file" type="file" className="hidden" />
-                </label>
+                    >
+                      ¿Por qué lo recomiendas?
+                    </span>
+                  </label>
+                  <label htmlFor="url" className=" relative">
+                    <input
+                      id="url"
+                      type="text"
+                      className="w-full h-11 border border-solid border-borderGray rounded-md p-5"
+                      required
+                      {...register('urlShare')}
+                    />
+                    <span className=" bg-white absolute left-2.5 top-5 px-2  transform -translate-y-7 -translate-4 text-[gray]">
+                      Link de referencia
+                    </span>
+                  </label>
+                  <button
+                    // onClick={completeFormStep}
+                    type="submit"
+                    className=" h-11 max-w-xs px-4 bg-primaryblue mt-10 rounded-3xl text-white self-center"
+                  >
+                    Crear Publicación
+                  </button>
+                </section>
+              )}
+              {stepForm === 1 && (
+                <section className="mt-5 flex flex-col gap-4  mb-16 w-full">
+                  <div className="flex items-center p-4 gap-4 justify-center w-full h-full border border-solid border-borderGray rounded-xl">
+                    <label
+                      htmlFor="dropzone-file"
+                      className="flex flex-col items-center justify-center rounded-lg cursor-pointer hover:bg-gray-100 bg-primarygrayLight h-52 w-2/6"
+                    >
+                      <Image src={addIcon} alt="add" />
+                      <input
+                        id="dropzone-file"
+                        type="file"
+                        className="hidden"
+                        accept=".jpg, .png, .jpeg"
+                      />
+                    </label>
+                    <label
+                      htmlFor="dropzone-file"
+                      className="flex flex-col items-center justify-center rounded-lg cursor-pointer hover:bg-gray-100 bg-primarygrayLight h-52 w-2/6"
+                    >
+                      <Image src={addIcon} alt="add" />
+                      <input
+                        id="dropzone-file"
+                        type="file"
+                        className="hidden"
+                        accept=".jpg, .png, .jpeg"
+                      />
+                    </label>
 
-                <label
-                  htmlFor="dropzone-file"
-                  className="flex  items-center justify-center rounded-lg cursor-pointer dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 bg-primarygrayLight dark:hover:border-gray-500 dark:hover:bg-gray-600 h-32 w-2/6"
-                >
-                  <Image src={addIcon} alt="add" />
-                  <input id="dropzone-file" type="file" className="hidden" />
-                </label>
-              </div>
-              <button className=" h-11 w-28 px-4 bg-primaryblue m-8 rounded-3xl text-white self-center">
-                Publicar
-              </button>
-            </section>
-          )}
-        </form>
+                    <label
+                      htmlFor="dropzone-file"
+                      className="flex  items-center justify-center rounded-lg cursor-pointer hover:bg-gray-100 bg-primarygrayLight h-52 w-2/6"
+                    >
+                      <Image src={addIcon} alt="add" />
+                      <input
+                        id="dropzone-file"
+                        type="file"
+                        className="hidden"
+                        accept=".jpg, .png, .jpeg"
+                      />
+                    </label>
+                  </div>
+                  <button className=" h-11 w-28 px-4 bg-primaryblue m-8 rounded-3xl text-white self-center">
+                    Publicar
+                  </button>
+                </section>
+              )}
+            </form>
+          </div>
+        </div>
       </div>
     </div>
   );

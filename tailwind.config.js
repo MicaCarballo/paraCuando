@@ -46,6 +46,7 @@ module.exports = {
         primarygrayLight: '#D9D9D9',
         primarygrayLighter: '#F8F7FA',
         secondaryred: '#EF3F47',
+        borderGray: '#7D7D7D',
       },
       fontFamily: {
         Roboto: ['Roboto', 'sans-serif'],

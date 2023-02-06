@@ -16,9 +16,10 @@ export default function Profile() {
           src={profileimg}
           width={117}
           height={117}
+          priority={true}
           alt=""
           className="absolute left-1/2 -translate-x-1/2 top-16"
-        ></Image>
+        />
       </div>
       <div className="flex justify-center pt-20 gap-3 h500-medium--14px">
         <Component1 text="Mis votos"></Component1>
