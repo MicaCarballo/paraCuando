@@ -140,10 +140,9 @@ export default function Detail() {
             <Image
               src={detailImage}
               alt="detailImage"
-              width={0}
-              height={0}
+              width={540}
+              height={380}
               priority={true}
-              style={{ width: '100%', height: '100%' }}
               className="object-cover"
             />
             <button className="block min-[800px]:hidden bg-primaryblue text-white text-lg font-normal rounded-full my-5 py-2 w-full min-[800px]:w-96">
