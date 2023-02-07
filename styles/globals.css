@@ -112,10 +112,11 @@
 
 .search-bar input {
   width: 100%;
-  max-width: 264px;
+  /* max-width: 264px; */
   margin-left: 24px;
+  margin-right: 24px;
   background-color: transparent;
-
+  outline: none;
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;

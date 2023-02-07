@@ -14,7 +14,7 @@ import { useCategories } from '../lib/services/categories.services';
 import { usePublications } from '../lib/services/publications.services';
 
 export default function Index() {
-  const { data: publications, error, isLoading } = usePublications();
+  const { data: publications } = usePublications();
   const { data: categories } = useCategories();
   console.log(publications);
 
