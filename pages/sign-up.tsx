@@ -26,7 +26,9 @@ const SignUp = () => {
   return (
     <div className=" md:flex flex-row-reverse w-screen">
       <div className="w-screen h-screen flex  pt-16 flex-col md:w-2/4 ">
-        <div className="bg-paraCuandoTitle w-52 h-44 bg-no-repeat bg-cover flex self-center "></div>
+        <Link href="/" className="  self-center">
+          <div className="bg-paraCuandoTitle w-52 h-44 bg-no-repeat bg-cover flex self-center "></div>
+        </Link>
         <div className="h-96 p-6 max-w-xl mx-auto ">
           <h1 className="font-semibold text-3xl">Sign up</h1>
           <p className="py-2.5 text-slate-500 text-base ">
