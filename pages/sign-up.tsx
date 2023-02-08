@@ -1,6 +1,27 @@
 import Link from 'next/link';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { signUp } from '../lib/services/auth.services';
+
+type Inputs = {
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+};
 
 const SignUp = () => {
+  const { register, handleSubmit } = useForm<Inputs>();
+
+  const onSubmit: SubmitHandler<Inputs> = async (data) => {
+    signUp(data)
+      .then((res) => {
+        window.location.href = '/login';
+        console.log(res.data);
+      })
+      .catch((err) => console.log(err));
+    console.log(data);
+  };
+
   return (
     <div className=" md:flex flex-row-reverse w-screen">
       <div className="w-screen h-screen flex  pt-16 flex-col md:w-2/4 ">
@@ -10,7 +31,11 @@ const SignUp = () => {
           <p className="py-2.5 text-slate-500 text-base ">
             Login with the data you entered during your registration.
           </p>
-          <form action="" className="flex flex-col gap-2">
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            action=""
+            className="flex flex-col gap-2"
+          >
             <label htmlFor="" className="text-[#1D1C3F] font-semibold">
               Email
             </label>
@@ -18,6 +43,7 @@ const SignUp = () => {
               type="email"
               placeholder="john.doe@gmail.com"
               className="h-11 rounded-sm p-2 border-gray-300 border-solid border"
+              {...register('email', { required: true })}
             />
 
             <div className="flex gap-2 w-full">
@@ -29,6 +55,7 @@ const SignUp = () => {
                   type="text"
                   placeholder="Erik"
                   className="h-11 rounded-sm p-2 border-gray-300 border-solid border"
+                  {...register('firstName', { required: true })}
                 />
               </div>
               <div className="flex flex-col w-2/4">
@@ -39,6 +66,7 @@ const SignUp = () => {
                   type="text"
                   placeholder="Perez"
                   className="h-11 rounded-sm p-2 border-gray-300 border-solid border"
+                  {...register('lastName', { required: true })}
                 />
               </div>
             </div>
@@ -49,6 +77,7 @@ const SignUp = () => {
               type="password"
               placeholder="***********"
               className="h-11 rounded-sm p-2 border-gray-300 border-solid border"
+              {...register('password', { required: true })}
             />
             <button className="bg-blue-800 h-10 rounded p-2 text-white cursor-pointer">
               Crear cuenta
