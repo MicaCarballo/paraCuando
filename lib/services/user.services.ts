@@ -1,9 +1,19 @@
+import useSWR from 'swr';
 import axios from '../helpers/axios.helpers';
+import { fetcher } from '../helpers/fetcher';
+import { UserInfoResponse } from '../interfaces/user-info.interface';
 
 function useUserInfo() {
-  return axios.get(
-    'https://paracuando-team1.academlo.tech/api/v1/users/user-info'
+  const { data, error, isLoading, mutate } = useSWR<UserInfoResponse>(
+    '/users/user-info',
+    fetcher
   );
+  return {
+    data: data?.results,
+    error,
+    isLoading,
+    mutate,
+  };
 }
 
 function createPublication(data: {

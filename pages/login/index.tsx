@@ -16,7 +16,7 @@ const Login = () => {
     login(data)
       .then((res) => {
         cookie.set('token', res.data.token[0].public);
-        router.push('/profile');
+        window.location.href = '/profile';
       })
       .catch((err) => console.log(err));
     console.log(data);
