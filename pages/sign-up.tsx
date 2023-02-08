@@ -15,9 +15,9 @@ const SignUp = () => {
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     signUp(data)
       .then((res) => {
-        window.location.href = '/login';
         alert('Se ha creado el usuario!');
         console.log(res.data);
+        window.location.href = '/login';
       })
       .catch((err) => console.log(err));
     console.log(data);
