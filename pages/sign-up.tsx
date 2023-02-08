@@ -16,6 +16,7 @@ const SignUp = () => {
     signUp(data)
       .then((res) => {
         window.location.href = '/login';
+        alert('Se ha creado el usuario!');
         console.log(res.data);
       })
       .catch((err) => console.log(err));
@@ -40,6 +41,7 @@ const SignUp = () => {
               Email
             </label>
             <input
+              id="email"
               type="email"
               placeholder="john.doe@gmail.com"
               className="h-11 rounded-sm p-2 border-gray-300 border-solid border"
@@ -52,6 +54,7 @@ const SignUp = () => {
                   Nombre
                 </label>
                 <input
+                  id="firstName"
                   type="text"
                   placeholder="Erik"
                   className="h-11 rounded-sm p-2 border-gray-300 border-solid border"
@@ -63,6 +66,7 @@ const SignUp = () => {
                   Apellido
                 </label>
                 <input
+                  id="lastName"
                   type="text"
                   placeholder="Perez"
                   className="h-11 rounded-sm p-2 border-gray-300 border-solid border"
@@ -74,12 +78,16 @@ const SignUp = () => {
               Password
             </label>
             <input
+              id="password"
               type="password"
               placeholder="***********"
               className="h-11 rounded-sm p-2 border-gray-300 border-solid border"
               {...register('password', { required: true })}
             />
-            <button className="bg-blue-800 h-10 rounded p-2 text-white cursor-pointer">
+            <button
+              type="submit"
+              className="bg-blue-800 h-10 rounded p-2 text-white cursor-pointer"
+            >
               Crear cuenta
             </button>
           </form>
