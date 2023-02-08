@@ -23,10 +23,7 @@ function createPublication(data: {
   description: string;
   urlShare: string;
 }) {
-  return axios.post(
-    'https://paracuando-team1.academlo.tech/api/v1/publications',
-    data
-  );
+  return axios.post('/publications', data);
 }
 
 export { useUserInfo, createPublication };
