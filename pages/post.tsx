@@ -25,7 +25,7 @@ export default function Post() {
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     await createPublication(data)
-      .then((res) => {
+      .then(() => {
         alert('Se ha creado la publicación!');
         reset();
       })
@@ -47,16 +47,22 @@ export default function Post() {
     <div className=" with-screen h-screen md:grid grid-cols-[1fr_4fr] ">
       <div className=" h-[320px] w-full bg-primaryblue flex flex-col justify-around items-start md:h-screen md:w-full">
         <Link href="/" className="flex flex-col relative mt-20 mx-auto">
-          <img
+          <Image
+            width={137}
+            height={123}
             src="/paraCuandoCreatePubl.svg"
             alt="aaa"
             className="bg-center self-center"
+            priority={true}
           />
-          <img
+          <Image
+            width={144}
+            height={32}
             src="/paraCuandoCreatePubl2.svg"
             alt="aaa"
             className="absolute -bottom-4"
-          ></img>
+            priority={true}
+          />
         </Link>
 
         <div className="flex flex-col p-7">

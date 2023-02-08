@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { ReactNode } from 'react';
+import { useUserInfo } from '../lib/services/user.services';
 import paraCuandoLogo from '../public/paraCuandoLogo.svg';
 
 interface Props {
@@ -11,7 +12,8 @@ const Header = ({ isLogged = false }: Props) => {
   const [showMenu, setShowMenu] = React.useState(false);
   const email = 'email@test.com';
 
-  // const changeStatus = useUserInfo().then((res) => res.data);
+  const { data: user } = useUserInfo();
+  console.log(user);
 
   return (
     <>

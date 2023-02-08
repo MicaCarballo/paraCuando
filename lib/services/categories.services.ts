@@ -4,7 +4,7 @@ import { CategoriesResponse } from '../interfaces/categories.interface';
 
 function useCategories() {
   const { data, error, isLoading, mutate } = useSWR<CategoriesResponse>(
-    'https://paracuando-team1.academlo.tech/api/v1/publications-types',
+    '/publications-types',
     fetcher
   );
   return {
@@ -17,9 +17,7 @@ function useCategories() {
 
 function useCategoriesId(category_id: any) {
   const { data, error, isLoading, mutate } = useSWR<CategoriesResponse>(
-    category_id
-      ? `https://paracuando-team1.academlo.tech/api/v1/publications-types/${category_id}`
-      : null,
+    category_id ? `/publications-types/${category_id}` : null,
     fetcher
   );
   return {
