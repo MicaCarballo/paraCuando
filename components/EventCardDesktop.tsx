@@ -1,10 +1,19 @@
+import Link from 'next/link';
+import LikeIcon from './LikedIcon';
+
 interface Props {
   title: string;
   description: string;
   linkToEvent: string;
+  publication_id: string;
 }
 
-const EventCardDesktop = ({ title, description, linkToEvent }: Props) => {
+const EventCardDesktop = ({
+  title,
+  description,
+  linkToEvent,
+  publication_id,
+}: Props) => {
   return (
     <div className=" card-event-desktop bg-white   rounded-2xl shadow-md ">
       <div className="img-container-desktop  w-full bg-no-repeat bg-cover  "></div>
@@ -12,7 +21,12 @@ const EventCardDesktop = ({ title, description, linkToEvent }: Props) => {
       <div className=" text-container py-3 px-6 relative ">
         <div className="like absolute -top-9 right-8">{/* <LikeIcon /> */}</div>
         <div className="">
-          <h3 className="font-semibold text-xl leading-6">{title}</h3>
+          <Link
+            href={`/event/${publication_id}`}
+            className="font-semibold text-xl leading-6"
+          >
+            {title}
+          </Link>
           <p className="text-sm py-1.5 text-slate-500 leading-4 ">
             {description}
           </p>
