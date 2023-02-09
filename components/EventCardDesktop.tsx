@@ -1,5 +1,3 @@
-import LikeIcon from './LikedIcon';
-
 interface Props {
   title: string;
   description: string;
@@ -12,9 +10,7 @@ const EventCardDesktop = ({ title, description, linkToEvent }: Props) => {
       <div className="img-container-desktop  w-full bg-no-repeat bg-cover  "></div>
 
       <div className=" text-container py-3 px-6 relative ">
-        <div className="like absolute -top-9 right-8">
-          <LikeIcon />
-        </div>
+        <div className="like absolute -top-9 right-8">{/* <LikeIcon /> */}</div>
         <div className="">
           <h3 className="font-semibold text-xl leading-6">{title}</h3>
           <p className="text-sm py-1.5 text-slate-500 leading-4 ">
