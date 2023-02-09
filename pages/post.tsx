@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import Swal from 'sweetalert2';
 import { useCategories } from '../lib/services/categories.services';
 import { useTags } from '../lib/services/tags.services';
 import { createPublication } from '../lib/services/user.services';
@@ -11,7 +12,7 @@ import addIcon from '../public/addIcon.png';
 type Inputs = {
   title: string;
   tags: string;
-  publication_type_id: string;
+  idPublicationType: string;
   description: string;
   urlShare: string;
 };
@@ -26,10 +27,22 @@ export default function Post() {
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     await createPublication(data)
       .then(() => {
-        alert('Se ha creado la publicación!');
+        Swal.fire({
+          title: 'Piola!',
+          text: 'Se ha creado la publicación',
+          icon: 'success',
+          timer: 2000,
+          showConfirmButton: false,
+        });
         reset();
       })
-      .catch((err) => console.log(err));
+      .catch((err) =>
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: '¡Algo salió mal!',
+        })
+      );
   };
 
   const [stepForm, setstepForm] = useState(0);
@@ -147,7 +160,7 @@ export default function Post() {
                       ))}
                     </select>
                     <select
-                      {...register('publication_type_id')}
+                      {...register('idPublicationType')}
                       className="w-full h-12 border border-borderGray rounded-[11px] pl-2"
                       defaultValue={''}
                       required

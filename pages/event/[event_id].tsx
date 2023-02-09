@@ -8,7 +8,8 @@ import SearchBar from '../../components/SearchBar';
 // Import Swiper styles
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React from 'react';
+import { useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
 import 'swiper/css';
 import Categories from '../../components/Categories';
 import Component1 from '../../components/Component1';
@@ -22,26 +23,61 @@ import {
 } from '../../lib/services/user.services';
 
 export default function Detail() {
-  const [showMenuHeader, setShowMenuHeader] = React.useState(false);
+  const router = useRouter();
+  const { event_id } = router.query;
 
   const { data: publications } = usePublications();
   const { data: categories } = useCategories();
   const { data: userInfo, error } = useUserInfo();
-  const { data: voteInfo } = useUserVotes(userInfo?.id);
-  const router = useRouter();
-  const { event_id } = router.query;
-
+  const { data: votes } = useUserVotes(userInfo?.id);
   const detail = publications?.results.find((detail) => detail.id == event_id);
+
+  const [showMenuHeader, setShowMenuHeader] = useState(false);
+
+  const [voted, setVoted] = useState(false);
+
+  let getVote: HTMLElement | null;
+  let initVote = false;
 
   const clickVote = async function votePublication() {
     if (error) {
       router.push('/login');
     } else {
       await createVote(event_id)
-        .then((res) => console.log(res.data.results))
+        .then((res) => {
+          if (res.data.results == 'Vote removed') {
+            setVoted(false);
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Something went wrong!',
+            });
+          } else {
+            setVoted(true);
+            Swal.fire({
+              title: 'Piola!',
+              text: 'Voto enviado',
+              icon: 'success',
+              timer: 2000,
+              showConfirmButton: false,
+            });
+          }
+        })
         .catch((err) => console.log(err));
     }
   };
+
+  useEffect(() => {
+    if (!initVote) {
+      setVoted(
+        votes?.results.find((x) => x.publication_id == detail?.id) != undefined
+      );
+      initVote = true;
+      console.log(`pichula ${initVote}`);
+    }
+    getVote = document.getElementById('vote');
+    getVote && (getVote.innerText = voted ? 'No Votar' : 'Votar');
+  }, [voted]);
 
   return (
     <Layout
@@ -146,9 +182,10 @@ export default function Detail() {
                     strokeWidth="1.5"
                   />
                 </svg>
-                {voteInfo ? `${voteInfo.count} votos` : ''}
+                9000000 votos
               </span>
               <button
+                id="vote"
                 onClick={clickVote}
                 className="hidden min-[800px]:block bg-primaryblue text-white text-lg font-normal rounded-full my-5 mx-auto py-2 w-full max-w-96"
               >

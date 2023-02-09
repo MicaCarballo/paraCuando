@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import Swal from 'sweetalert2';
 import { signUp } from '../lib/services/auth.services';
 
 type Inputs = {
@@ -15,9 +16,17 @@ const SignUp = () => {
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     signUp(data)
       .then((res) => {
-        alert('Se ha creado el usuario!');
+        Swal.fire({
+          title: 'Piola!',
+          text: 'Se ha registrado el usuario',
+          icon: 'success',
+          timer: 2000,
+          showConfirmButton: false,
+        });
         console.log(res.data);
-        window.location.href = '/login';
+        setTimeout(() => {
+          window.location.href = '/login';
+        }, 2500);
       })
       .catch((err) => console.log(err));
     console.log(data);
