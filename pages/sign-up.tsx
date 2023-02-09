@@ -1,4 +1,7 @@
+import cookie from 'js-cookie';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import Swal from 'sweetalert2';
 import { signUp } from '../lib/services/auth.services';
@@ -11,6 +14,7 @@ type Inputs = {
 };
 
 const SignUp = () => {
+  const router = useRouter();
   const { register, handleSubmit } = useForm<Inputs>();
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
@@ -38,6 +42,12 @@ const SignUp = () => {
       });
     console.log(data);
   };
+
+  useEffect(() => {
+    if (cookie.get('token')) {
+      router.push('/profile');
+    }
+  }, []);
 
   return (
     <div className=" md:flex flex-row-reverse w-screen">
