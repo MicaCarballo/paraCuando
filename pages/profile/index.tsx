@@ -50,16 +50,16 @@ export default function Profile() {
         />
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 w-fit h-2/3 m-auto pt-16 pb-40 justify-items-center gap-5">
-        {/*showVotes ? 'votos' : 'publicaciones'*/}
-
-        {votes?.results.map((mypublication) => (
-          <EventCardDesktop
-            key={mypublication.publication_id}
-            title={mypublication.Publication.title}
-            description={mypublication.Publication.description}
-            linkToEvent={mypublication.Publication.content}
-          />
-        ))}
+        {showVotes
+          ? votes?.results.map((vote) => (
+              <EventCardDesktop
+                key={vote.publication_id}
+                title={vote.Publication.title}
+                description={vote.Publication.description}
+                linkToEvent={vote.Publication.content}
+              />
+            ))
+          : 'hola'}
       </div>
     </Layout>
   );

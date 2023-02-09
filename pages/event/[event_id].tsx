@@ -36,9 +36,6 @@ export default function Detail() {
 
   const [voted, setVoted] = useState(false);
 
-  let getVote: HTMLElement | null;
-  let initVote = false;
-
   const clickVote = async function votePublication() {
     if (error) {
       router.push('/login');
@@ -47,18 +44,13 @@ export default function Detail() {
         .then((res) => {
           if (res.data.results == 'Vote removed') {
             setVoted(false);
-            Swal.fire({
-              icon: 'error',
-              title: 'Oops...',
-              text: 'Something went wrong!',
-            });
           } else {
             setVoted(true);
             Swal.fire({
               title: 'Piola!',
               text: 'Voto enviado',
               icon: 'success',
-              timer: 2000,
+              timer: 1000,
               showConfirmButton: false,
             });
           }
@@ -68,16 +60,14 @@ export default function Detail() {
   };
 
   useEffect(() => {
-    if (!initVote) {
-      setVoted(
-        votes?.results.find((x) => x.publication_id == detail?.id) != undefined
+    if (votes) {
+      const flag = votes.results.find(
+        (vote) => vote.publication_id === event_id
       );
-      initVote = true;
-      console.log(`pichula ${initVote}`);
+
+      flag ? setVoted(true) : setVoted(false);
     }
-    getVote = document.getElementById('vote');
-    getVote && (getVote.innerText = voted ? 'No Votar' : 'Votar');
-  }, [voted]);
+  }, [votes]);
 
   return (
     <Layout
@@ -182,14 +172,16 @@ export default function Detail() {
                     strokeWidth="1.5"
                   />
                 </svg>
-                9000000 votos
+                {`${detail?.votes_count} voto${
+                  detail?.votes_count != 1 ? 's' : ''
+                }`}
               </span>
               <button
                 id="vote"
                 onClick={clickVote}
                 className="hidden min-[800px]:block bg-primaryblue text-white text-lg font-normal rounded-full my-5 mx-auto py-2 w-full max-w-96"
               >
-                Votar
+                {voted ? 'Quitar voto' : 'Votar'}
               </button>
             </div>
             <Image
@@ -204,7 +196,7 @@ export default function Detail() {
               onClick={clickVote}
               className="block min-[800px]:hidden bg-primaryblue text-white text-lg font-normal rounded-full my-5 py-2 w-full min-[800px]:w-96"
             >
-              Votar
+              {voted ? 'Quitar voto' : 'Votar'}
             </button>
           </div>
         </section>

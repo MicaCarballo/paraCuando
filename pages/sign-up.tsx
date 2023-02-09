@@ -28,7 +28,14 @@ const SignUp = () => {
           window.location.href = '/login';
         }, 2500);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: '¡Este usuario ya existe!',
+        });
+        console.log(err);
+      });
     console.log(data);
   };
 

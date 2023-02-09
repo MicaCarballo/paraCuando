@@ -8,6 +8,7 @@ interface Props {
   titleEvent: string;
   linkToEvent: string;
   event_id: string;
+  votesCount: number;
 }
 
 export default function SliderContent({
@@ -16,9 +17,8 @@ export default function SliderContent({
   titleEvent,
   linkToEvent,
   event_id,
+  votesCount,
 }: Props) {
-  let numberOfVotes = "90'800'756";
-
   return (
     <div
       className="shadow rounded-3xl relative"
@@ -31,7 +31,7 @@ export default function SliderContent({
         priority={true}
         alt="sliderImg"
       />
-      <LikedIcon className="absolute top-52 right-6" />
+      <LikedIcon publicationId={event_id} className="absolute top-52 right-6" />
       <div className="p-3 px-5">
         <Link
           href={`/event/${event_id}`}
@@ -62,7 +62,7 @@ export default function SliderContent({
               strokeWidth="1.5"
             />
           </svg>
-          {`${numberOfVotes} votos`}
+          {`${votesCount} voto${votesCount != 1 ? 's' : ''}`}
         </span>
       </div>
     </div>
