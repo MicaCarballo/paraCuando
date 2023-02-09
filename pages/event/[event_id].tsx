@@ -15,18 +15,33 @@ import Component1 from '../../components/Component1';
 import Slider from '../../components/Slider/Slider';
 import { useCategories } from '../../lib/services/categories.services';
 import { usePublications } from '../../lib/services/publications.services';
+import {
+  createVote,
+  useUserInfo,
+  useUserVotes,
+} from '../../lib/services/user.services';
 
 export default function Detail() {
+  const [showMenuHeader, setShowMenuHeader] = React.useState(false);
+
   const { data: publications } = usePublications();
   const { data: categories } = useCategories();
+  const { data: userInfo, error } = useUserInfo();
+  const { data: voteInfo } = useUserVotes(userInfo?.id);
   const router = useRouter();
   const { event_id } = router.query;
 
-  const [showMenuHeader, setShowMenuHeader] = React.useState(false);
-
-  let numberOfVotes = "9'000'000";
-
   const detail = publications?.results.find((detail) => detail.id == event_id);
+
+  const clickVote = async function votePublication() {
+    if (error) {
+      router.push('/login');
+    } else {
+      await createVote(event_id)
+        .then((res) => console.log(res.data.results))
+        .catch((err) => console.log(err));
+    }
+  };
 
   return (
     <Layout
@@ -131,9 +146,12 @@ export default function Detail() {
                     strokeWidth="1.5"
                   />
                 </svg>
-                {`${numberOfVotes} votos`}
+                {voteInfo ? `${voteInfo.count} votos` : ''}
               </span>
-              <button className="hidden min-[800px]:block bg-primaryblue text-white text-lg font-normal rounded-full my-5 mx-auto py-2 w-full max-w-96">
+              <button
+                onClick={clickVote}
+                className="hidden min-[800px]:block bg-primaryblue text-white text-lg font-normal rounded-full my-5 mx-auto py-2 w-full max-w-96"
+              >
                 Votar
               </button>
             </div>
@@ -145,7 +163,10 @@ export default function Detail() {
               priority={true}
               className="object-cover"
             />
-            <button className="block min-[800px]:hidden bg-primaryblue text-white text-lg font-normal rounded-full my-5 py-2 w-full min-[800px]:w-96">
+            <button
+              onClick={clickVote}
+              className="block min-[800px]:hidden bg-primaryblue text-white text-lg font-normal rounded-full my-5 py-2 w-full min-[800px]:w-96"
+            >
               Votar
             </button>
           </div>

@@ -1,3 +1,4 @@
+import cookie from 'js-cookie';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { ReactNode } from 'react';
@@ -10,15 +11,17 @@ interface Props {
 
 const Header = ({ isLogged = false }: Props) => {
   const [showMenu, setShowMenu] = React.useState(false);
-  const email = 'email@test.com';
 
   const { data: user } = useUserInfo();
-  console.log(user);
+
+  if (user) {
+    isLogged = true;
+  }
 
   return (
     <>
       <div className="bg-primaryblackLight text-white">
-        <nav className="flex gap-4 justify-between items-center px-40 h-16 w-full my-0 mx-auto">
+        <nav className="flex gap-4 justify-between items-center px-10 md:px-40 h-16 w-full my-0 mx-auto">
           <Link href={'/'}>
             <Image
               src={paraCuandoLogo}
@@ -112,7 +115,7 @@ const Header = ({ isLogged = false }: Props) => {
                       />
                     </svg>
                   </div>
-                  {email}
+                  {user?.email}
                   <svg
                     width="10"
                     height="6"
@@ -152,7 +155,13 @@ const Header = ({ isLogged = false }: Props) => {
                     </svg>
                     Configuración
                   </Link>
-                  <button className="flex gap-4 items-center justify-start pb-2">
+                  <button
+                    className="flex gap-4 items-center justify-start pb-2"
+                    onClick={() => {
+                      cookie.remove('token');
+                      window.location.reload();
+                    }}
+                  >
                     <svg
                       width="20"
                       height="22"

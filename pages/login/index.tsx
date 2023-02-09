@@ -13,7 +13,7 @@ const Login = () => {
   const { register, handleSubmit } = useForm<Inputs>();
   const router = useRouter();
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
-    login(data)
+    await login(data)
       .then((res) => {
         cookie.set('token', res.data.token[0].public);
         window.location.href = '/profile';
