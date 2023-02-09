@@ -11,7 +11,7 @@ import addIcon from '../public/addIcon.png';
 type Inputs = {
   title: string;
   tags: string;
-  publication_type_id: string;
+  idPublicationType: string;
   description: string;
   urlShare: string;
 };
@@ -147,7 +147,7 @@ export default function Post() {
                       ))}
                     </select>
                     <select
-                      {...register('publication_type_id')}
+                      {...register('idPublicationType')}
                       className="w-full h-12 border border-borderGray rounded-[11px] pl-2"
                       defaultValue={''}
                       required

@@ -1,6 +1,12 @@
 import LikeIcon from './LikedIcon';
 
-const EventCardDesktop = () => {
+interface Props {
+  title: string;
+  description: string;
+  linkToEvent: string;
+}
+
+const EventCardDesktop = ({ title, description, linkToEvent }: Props) => {
   return (
     <div className=" card-event-desktop bg-white   rounded-2xl shadow-md ">
       <div className="img-container-desktop  w-full bg-no-repeat bg-cover  "></div>
@@ -10,19 +16,15 @@ const EventCardDesktop = () => {
           <LikeIcon />
         </div>
         <div className="">
-          <h3 className="font-semibold text-xl leading-6">
-            Concierto de Lady Gaga
-          </h3>
+          <h3 className="font-semibold text-xl leading-6">{title}</h3>
           <p className="text-sm py-1.5 text-slate-500 leading-4 ">
-            El concierto con la temática de Lady gaga en Las Vegas. El concierto
-            con la temática de Lady gaga en Las Vegas.El concierto con la
-            temática.
+            {description}
           </p>
           <a
             href="http://ladygaga.com"
             className="text-blue-700 font-medium text-sm"
           >
-            ladygaga.com
+            {linkToEvent}
           </a>
         </div>
         <div className="flex  gap-4 items-center  mt-4">

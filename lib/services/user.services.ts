@@ -20,7 +20,7 @@ function useUserInfo() {
 function createPublication(data: {
   title: string;
   tags: string;
-  publication_type_id: string;
+  idPublicationType: string;
   description: string;
   urlShare: string;
 }) {
