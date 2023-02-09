@@ -21,7 +21,7 @@ export default function Profile() {
     setShowVotes(true);
   };
 
-  const mypublications = publications?.results.filter(
+  const myPublications = publications?.results.filter(
     (x) => x.profile_id == user?.id
   );
   console.log(votes);
@@ -50,16 +50,25 @@ export default function Profile() {
         />
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 w-fit h-2/3 m-auto pt-16 pb-40 justify-items-center gap-5">
-        {/*showVotes ? 'votos' : 'publicaciones'*/}
-
-        {votes?.results.map((mypublication) => (
-          <EventCardDesktop
-            key={mypublication.publication_id}
-            title={mypublication.Publication.title}
-            description={mypublication.Publication.description}
-            linkToEvent={mypublication.Publication.content}
-          />
-        ))}
+        {showVotes
+          ? votes?.results.map((vote) => (
+              <EventCardDesktop
+                publication_id={vote.publication_id}
+                key={vote.publication_id}
+                title={vote.Publication.title}
+                description={vote.Publication.description}
+                linkToEvent={vote.Publication.content}
+              />
+            ))
+          : myPublications?.map((myPublications) => (
+              <EventCardDesktop
+                publication_id={myPublications.id}
+                key={myPublications.id}
+                title={myPublications.title}
+                description={myPublications.description}
+                linkToEvent={myPublications.content}
+              />
+            ))}
       </div>
     </Layout>
   );

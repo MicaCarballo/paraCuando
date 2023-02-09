@@ -8,7 +8,7 @@ interface Props {
 const ButtonProfile = ({ text, onClickProfile }: Props) => {
   return (
     <button
-      className="ButtonProfile bg-white hover:bg-primarygrayLighter transition-colors"
+      className="component1 bg-white hover:bg-primarygrayLighter transition-colors"
       onClick={onClickProfile}
     >
       <p>{text}</p>
