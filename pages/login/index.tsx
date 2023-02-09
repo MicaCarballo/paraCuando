@@ -1,6 +1,7 @@
 import cookie from 'js-cookie';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { login } from '../../lib/services/auth.services';
 
@@ -21,6 +22,12 @@ const Login = () => {
       .catch((err) => console.log(err));
     console.log(data);
   };
+
+  useEffect(() => {
+    if (cookie.get('token')) {
+      router.push('/profile');
+    }
+  }, []);
 
   return (
     <div className=" md:flex flex-row-reverse w-screen">

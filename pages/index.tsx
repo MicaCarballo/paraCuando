@@ -14,13 +14,13 @@ import { useCategories } from '../lib/services/categories.services';
 import { usePublications } from '../lib/services/publications.services';
 
 export default function Index() {
-  const { data: publications } = usePublications();
+  const { data: publications, isLoading } = usePublications();
   const { data: categories } = useCategories();
   console.log(publications);
 
-  // if (isLoading) {
-  //   return <div>Cargando . . .</div>;
-  // }
+  if (isLoading) {
+    return <div>Cargando . . .</div>;
+  }
   // if (error) {
   //   return <div>Ocurrió un error</div>;
   // }

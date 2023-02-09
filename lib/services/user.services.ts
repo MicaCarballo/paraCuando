@@ -4,10 +4,13 @@ import { fetcher } from '../helpers/fetcher';
 import { UserInfoResponse } from '../interfaces/user-info.interface';
 import { UserVotesResponse } from '../interfaces/votes.interface';
 
+const configSWR = { shouldRetryOnError: false, revalidateOnFocus: false };
+
 function useUserInfo() {
   const { data, error, isLoading, mutate } = useSWR<UserInfoResponse>(
     '/users/user-info',
-    fetcher
+    fetcher,
+    configSWR
   );
   return {
     data: data?.results,
@@ -33,7 +36,7 @@ function createVote(id: any) {
 
 function useUserVotes(user_id: any) {
   const { data, error, isLoading, mutate } = useSWR<UserVotesResponse>(
-    `/users/${user_id}/votes`,
+    user_id ? `/users/${user_id}/votes` : null,
     fetcher
   );
   return {

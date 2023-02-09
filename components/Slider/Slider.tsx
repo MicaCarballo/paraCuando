@@ -58,6 +58,7 @@ const Slider = ({ publications }: Props) => {
               text={publication.description}
               titleEvent={publication.title}
               event_id={publication.id}
+              votesCount={publication.votes_count}
             />
           </SwiperSlide>
         ))}

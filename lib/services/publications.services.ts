@@ -4,7 +4,7 @@ import { PublicationsResponse } from '../interfaces/publications.interface';
 
 function usePublications() {
   const { data, error, isLoading, mutate } = useSWR<PublicationsResponse>(
-    'https://paracuando-team1.academlo.tech/api/v1/publications',
+    'https://paracuando-team1.academlo.tech/api/v1/publications?size=100',
     fetcher
   );
   return {

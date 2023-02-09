@@ -21,8 +21,9 @@ export interface Publication {
   image_url: string;
   created_at: string;
   updated_at: string;
+  votes_count: number;
   City: City;
-  publication_type_id: string;
+  publication_type_id: PublicationTypeID;
   tags: Tag[];
 }
 

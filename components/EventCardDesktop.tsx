@@ -19,9 +19,7 @@ const EventCardDesktop = ({
       <div className="img-container-desktop  w-full bg-no-repeat bg-cover  "></div>
 
       <div className=" text-container py-3 px-6 relative ">
-        <div className="like absolute -top-9 right-8">
-          <LikeIcon />
-        </div>
+        <div className="like absolute -top-9 right-8">{/* <LikeIcon /> */}</div>
         <div className="">
           <Link
             href={`/event/${publication_id}`}
