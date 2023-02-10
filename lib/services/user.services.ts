@@ -1,6 +1,7 @@
 import useSWR from 'swr';
 import axios from '../helpers/axios.helpers';
 import { fetcher } from '../helpers/fetcher';
+import { PublicationsResponse } from '../interfaces/publications.interface';
 import { UserInfoResponse } from '../interfaces/user-info.interface';
 import { UserVotesResponse } from '../interfaces/votes.interface';
 
@@ -47,4 +48,23 @@ function useUserVotes(user_id: any) {
   };
 }
 
-export { useUserInfo, createPublication, useUserVotes, createVote };
+function useUserPublications(user_id: any) {
+  const { data, error, isLoading, mutate } = useSWR<PublicationsResponse>(
+    user_id ? `/users/${user_id}/publications` : null,
+    fetcher
+  );
+  return {
+    data: data?.results,
+    error,
+    isLoading,
+    mutate,
+  };
+}
+
+export {
+  useUserInfo,
+  createPublication,
+  useUserVotes,
+  createVote,
+  useUserPublications,
+};

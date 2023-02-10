@@ -1,18 +1,21 @@
 import Image from 'next/image';
 import { useState } from 'react';
 import { default as ButtonProfile } from '../../components/ButtonProfile';
-import EventCardDesktop from '../../components/EventCardDesktop';
 import Layout from '../../components/Layout';
-import { usePublications } from '../../lib/services/publications.services';
-import { useUserInfo, useUserVotes } from '../../lib/services/user.services';
+import SliderContent from '../../components/Slider/SliderContent';
+import {
+  useUserInfo,
+  useUserPublications,
+  useUserVotes,
+} from '../../lib/services/user.services';
 import profileimg from '../../public/profileimg.png';
 
 //responsive desing tailwind
 export default function Profile() {
-  const [showVotes, setShowVotes] = useState(false);
+  const [showVotes, setShowVotes] = useState(true);
   const { data: user } = useUserInfo();
   const { data: votes } = useUserVotes(user?.id);
-  const { data: publications } = usePublications();
+  const { data: myPublications } = useUserPublications(user?.id);
   const buttonPublications = function () {
     setShowVotes(false);
   };
@@ -20,11 +23,6 @@ export default function Profile() {
   const buttonVotes = function () {
     setShowVotes(true);
   };
-
-  const myPublications = publications?.results.filter(
-    (x) => x.profile_id == user?.id
-  );
-  console.log(votes);
 
   return (
     <Layout
@@ -52,21 +50,25 @@ export default function Profile() {
       <div className="grid grid-cols-1 md:grid-cols-3 w-fit h-2/3 m-auto pt-16 pb-40 justify-items-center gap-5">
         {showVotes
           ? votes?.results.map((vote) => (
-              <EventCardDesktop
-                publication_id={vote.publication_id}
+              <SliderContent
+                img={vote.Publication.image_url || '/sliderImg.png'}
+                event_id={vote.publication_id}
                 key={vote.publication_id}
-                title={vote.Publication.title}
-                description={vote.Publication.description}
+                titleEvent={vote.Publication.title}
+                text={vote.Publication.description}
                 linkToEvent={vote.Publication.content}
+                votesCount={vote.Publication.votes_count}
               />
             ))
-          : myPublications?.map((myPublications) => (
-              <EventCardDesktop
-                publication_id={myPublications.id}
-                key={myPublications.id}
-                title={myPublications.title}
-                description={myPublications.description}
-                linkToEvent={myPublications.content}
+          : myPublications?.results.map((myPublication) => (
+              <SliderContent
+                img={myPublication.image_url || '/sliderImg.png'}
+                event_id={myPublication.id}
+                key={myPublication.id}
+                titleEvent={myPublication.title}
+                text={myPublication.description}
+                linkToEvent={myPublication.content}
+                votesCount={myPublication.votes_count}
               />
             ))}
       </div>

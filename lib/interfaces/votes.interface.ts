@@ -8,10 +8,10 @@ export interface Results {
   count: number;
   totalPages: number;
   CurrentPage: number;
-  results: Vote[];
+  results: Result[];
 }
 
-export interface Vote {
+export interface Result {
   publication_id: string;
   profile_id: string;
   created_at: string;
@@ -29,6 +29,7 @@ export interface Publication {
   image_url: string;
   created_at: string;
   updated_at: string;
+  votes_count: number;
   City: City;
   publication_type_id: PublicationTypeID;
   tags: Tag[];
