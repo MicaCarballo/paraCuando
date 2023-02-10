@@ -32,23 +32,27 @@ export default function SliderContent({
         alt="sliderImg"
       />
       <LikedIcon publicationId={event_id} className="absolute top-52 right-6" />
-      <div className="p-3 px-5">
+      <div className="p-3 px-5 relative">
         <Link
           href={`/event/${event_id}`}
           className="h600-medium--20px hover:underline"
         >
-          {titleEvent}
+          {titleEvent.slice(0, 25) + (titleEvent.length > 25 ? '...' : '')}
         </Link>
-        <p className="h400-medium--15px h-24 overflow-hidden">{text}</p>
+        <p className="h400-medium--15px h-[90px] overflow-hidden relative z-0">
+          {text}
+        </p>
+        <div className="w-64 h-24 bg-gradient-to-t from-white absolute bottom-0 z-10"></div>
         <a
           href={`${linkToEvent}`}
           rel="noreferrer"
           target="_blank"
-          className="text-primaryblue h500-medium--14px absolute bottom-16 px-1"
+          className="text-primaryblue h500-medium--14px absolute -bottom-4 px-1"
         >
-          {linkToEvent.slice(linkToEvent.indexOf('.') + 1)}
+          {linkToEvent.slice(linkToEvent.indexOf('.') + 1, 45) +
+            (linkToEvent.length > 45 ? '...' : '')}
         </a>
-        <span className="flex gap-2 items-center absolute bottom-9 px-2 h500-medium--14px">
+        <span className="flex gap-2 items-center absolute -bottom-12 px-2 h500-medium--14px">
           <svg
             width="17"
             height="17"

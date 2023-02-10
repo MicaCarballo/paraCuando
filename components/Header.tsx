@@ -132,10 +132,49 @@ const Header = ({ isLogged = false }: Props) => {
                 {/* ------- MENU ------- */}
                 <div
                   id="menu"
-                  className={`z-20 w-48 flex gap-x-8 gap-y-5 flex-col absolute top-8 -left-8 bg-white shadow-lg rounded-xl p-5 text-primaryblack transition-opacity ${
+                  className={`z-20 w-48 h-fit flex gap-x-8 gap-y-5 flex-col absolute top-8 -left-5 bg-white shadow-lg rounded-xl p-5 text-primaryblack transition-opacity ${
                     showMenu ? 'opacity-100' : 'opacity-0 pointer-events-none'
                   }`}
                 >
+                  <Link
+                    href={'/post'}
+                    className={`text-primaryblue font-semibold flex gap-5 items-center pl-1 sm:hidden`}
+                  >
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M16 9.14286H9.14286V16H6.85714V9.14286H0V6.85714H6.85714V0H9.14286V6.85714H16V9.14286Z"
+                        fill="#1B4DB1"
+                      />
+                    </svg>
+                    Crear publicación
+                  </Link>
+                  <Link
+                    href={'/profile'}
+                    className="gap-4 flex items-center pl-1 sm:hidden"
+                  >
+                    <svg
+                      width="19"
+                      height="16"
+                      viewBox="0 0 19 16"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M5.675 1C3.09313 1 1 3.00868 1 5.4864C1 9.97279 6.525 14.0513 9.5 15C12.475 14.0513 18 9.97279 18 5.4864C18 3.00868 15.9069 1 13.325 1C11.744 1 10.3458 1.75331 9.5 2.90631C9.06891 2.31705 8.49622 1.83614 7.8304 1.50431C7.16458 1.17248 6.42525 0.999492 5.675 1Z"
+                        stroke="#FF64BC"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                    Mis votos
+                  </Link>
                   <Link
                     href={'/config'}
                     className="flex gap-4 items-center justify-start"

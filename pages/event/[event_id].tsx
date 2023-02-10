@@ -60,14 +60,16 @@ export default function Detail() {
   };
 
   useEffect(() => {
-    if (votes) {
-      const flag = votes.results.find(
-        (vote) => vote.publication_id === event_id
-      );
-
-      flag ? setVoted(true) : setVoted(false);
+    if (!votes) {
+      return;
     }
+
+    const flag =
+      votes.results.find((v) => v.publication_id === event_id) !== undefined;
+    setVoted(flag);
   }, [votes]);
+
+  console.log(detail);
 
   return (
     <Layout
@@ -147,7 +149,9 @@ export default function Detail() {
         <section className="pb-14 min-[800px]:pb-28">
           <div className="px-10 min-[1200px]:p-0 min-[800px]:grid grid-cols-2 gap-5">
             <div className="max-w-xl">
-              <h4 className="h500-normal--16px">Artista / Pop / Rock</h4>
+              <h4 className="h500-normal--16px">
+                {detail?.publication_type.name + ' / ' + detail?.tags[0].name}
+              </h4>
               <h1 className="h900-normal--48px">{detail && detail.title}</h1>
               <p className="h400-normal--16px py-6">
                 {detail && detail.description}

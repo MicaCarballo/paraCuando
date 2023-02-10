@@ -14,26 +14,6 @@ module.exports = {
       lg: '1200px',
       xl: '1536px',
     },
-    backgroundImage: {
-      paraCuandoTitle: "url('../public/paraCuandoTitle.png')",
-      paraCuandoTitleWhite: "url('../public/paraCuandoTitleWhite.png')",
-      loginDesktop: "url('../public/loginDesktopImg.png')",
-      loginDeskTitle1: "url('../public/loginDeskTitle1.png')",
-      loginDeskTitle2: "url('../public/loginDeskTitle2.png')",
-      signinDesktopImg: "url('../public/signinDesktopImg.png')",
-      loginDeskTitle1Small: "url('../public/loginDeskTitle1Small.png')",
-      //* HOME
-      homeImage: "url('../public/homeImage.png')",
-      homeImageMobile: "url('../public/homeImageMobile.png')",
-      //* BRANDS
-      brandsImage: "url('../public/brandsImage.png')",
-      brandsImageMobile: "url('../public/brandsImageMobile.png')",
-      //* ARTISTS
-      artistsImage: "url('../public/artistsImage.png')",
-      //* TOURNAMENTS
-      tournamentsImage: "url('../public/tournamentsImage.png')",
-    },
-
     extend: {
       colors: {
         primaryblue: '#1B4DB1',
@@ -50,6 +30,25 @@ module.exports = {
       },
       fontFamily: {
         Roboto: ['Roboto', 'sans-serif'],
+      },
+      backgroundImage: {
+        paraCuandoTitle: "url('../public/paraCuandoTitle.png')",
+        paraCuandoTitleWhite: "url('../public/paraCuandoTitleWhite.png')",
+        loginDesktop: "url('../public/loginDesktopImg.png')",
+        loginDeskTitle1: "url('../public/loginDeskTitle1.png')",
+        loginDeskTitle2: "url('../public/loginDeskTitle2.png')",
+        signinDesktopImg: "url('../public/signinDesktopImg.png')",
+        loginDeskTitle1Small: "url('../public/loginDeskTitle1Small.png')",
+        //* HOME
+        homeImage: "url('../public/homeImage.png')",
+        homeImageMobile: "url('../public/homeImageMobile.png')",
+        //* BRANDS
+        brandsImage: "url('../public/brandsImage.png')",
+        brandsImageMobile: "url('../public/brandsImageMobile.png')",
+        //* ARTISTS
+        artistsImage: "url('../public/artistsImage.png')",
+        //* TOURNAMENTS
+        tournamentsImage: "url('../public/tournamentsImage.png')",
       },
     },
   },

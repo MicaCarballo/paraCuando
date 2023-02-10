@@ -12,7 +12,7 @@ import profileimg from '../../public/profileimg.png';
 
 //responsive desing tailwind
 export default function Profile() {
-  const [showVotes, setShowVotes] = useState(true);
+  const [showVotes, setShowVotes] = useState(false);
   const { data: user } = useUserInfo();
   const { data: votes } = useUserVotes(user?.id);
   const { data: myPublications } = useUserPublications(user?.id);

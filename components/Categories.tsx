@@ -35,7 +35,7 @@ const Categories = () => {
           </SwiperSlide>
         ))}
       </Swiper>
-      <Link href={'/categories'} className="py-4 block text-primaryblue w-max">
+      <Link href={'/config'} className="py-4 block text-primaryblue w-max">
         Ver todos los intereses
       </Link>
     </div>

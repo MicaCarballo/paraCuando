@@ -23,7 +23,8 @@ export interface Publication {
   updated_at: string;
   votes_count: number;
   City: City;
-  publication_type_id: PublicationTypeID;
+  publication_type_id: number;
+  publication_type: PublicationTypeID;
   tags: Tag[];
 }
 
