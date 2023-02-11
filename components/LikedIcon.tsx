@@ -48,7 +48,7 @@ const LikedIcon = ({ className, publicationId }: Props) => {
 
   return (
     <button
-      className={`${className} flex items-center justify-center p-2 h-12 w-12 border-white rounded-full ${
+      className={`${className} absolute z-10 hover:scale-105 transition-transform flex items-center justify-center p-2 h-12 w-12 border-white rounded-full ${
         liked ? ' bg-primarypink' : ' bg-primarygrayLight'
       }`}
       onClick={clickVote}

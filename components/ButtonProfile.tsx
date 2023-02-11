@@ -3,12 +3,13 @@ import { MouseEventHandler, ReactNode } from 'react';
 interface Props {
   text: ReactNode;
   onClickProfile: MouseEventHandler<HTMLButtonElement>;
+  className?: string;
 }
 
-const ButtonProfile = ({ text, onClickProfile }: Props) => {
+const ButtonProfile = ({ className, text, onClickProfile }: Props) => {
   return (
     <button
-      className="component1 bg-white hover:bg-primarygrayLighter transition-colors"
+      className={`component1 bg-white transition-all ${className}`}
       onClick={onClickProfile}
     >
       <p>{text}</p>

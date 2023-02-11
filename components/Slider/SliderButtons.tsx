@@ -34,7 +34,7 @@ export default function SliderButtons({ back, next }: Props) {
           }}
           className={`${
             hiddenBack ? 'opacity-0 pointer-events-none' : 'block'
-          }`}
+          } transition-opacity`}
         >
           <svg
             width="59"
@@ -42,7 +42,7 @@ export default function SliderButtons({ back, next }: Props) {
             viewBox="0 0 59 59"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            className="absolute -left-16 top-1/2 hidden lg:block"
+            className="absolute -left-16 top-1/2 hidden lg:block hover:scale-105 transition-transform "
           >
             <path
               d="M29.5 44.25L32.1366 41.6817L21.8484 31.3437L44.25 31.3438V27.6562L21.8484 27.6562L32.1366 17.381L29.5 14.75L14.75 29.5L29.5 44.25Z"
@@ -63,7 +63,7 @@ export default function SliderButtons({ back, next }: Props) {
           }}
           className={`${
             hiddenNext ? 'opacity-0 pointer-events-none' : 'block'
-          }`}
+          } transition-opacity`}
         >
           <svg
             width="59"
@@ -71,7 +71,7 @@ export default function SliderButtons({ back, next }: Props) {
             viewBox="0 0 59 59"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            className="absolute -right-16 top-1/2 hidden lg:block"
+            className="absolute -right-16 top-1/2 hidden lg:block hover:scale-105 transition-transform "
           >
             <path
               d="M29.5 14.75L26.8634 17.3183L37.1516 27.6562H14.75V31.3438H37.1516L26.8634 41.619L29.5 44.25L44.25 29.5L29.5 14.75Z"

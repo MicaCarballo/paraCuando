@@ -115,7 +115,9 @@ const Header = ({ isLogged = false }: Props) => {
                       />
                     </svg>
                   </div>
-                  {user?.email}
+                  {user &&
+                    user.email.slice(0, 30) +
+                      (user.email.length > 30 ? '...' : '')}
                   <svg
                     width="10"
                     height="6"

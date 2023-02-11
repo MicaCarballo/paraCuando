@@ -16,6 +16,30 @@ export default function Profile() {
   const { data: user } = useUserInfo();
   const { data: votes } = useUserVotes(user?.id);
   const { data: myPublications } = useUserPublications(user?.id);
+
+  let voteArr = votes?.results.map((vote) => (
+    <SliderContent
+      img={vote.Publication.image_url || '/sliderImg.png'}
+      event_id={vote.publication_id}
+      key={vote.publication_id}
+      titleEvent={vote.Publication.title}
+      text={vote.Publication.description}
+      linkToEvent={vote.Publication.content}
+      votesCount={vote.Publication.votes_count}
+    />
+  ));
+  let publicationArr = myPublications?.results.map((myPublication) => (
+    <SliderContent
+      img={myPublication.image_url || '/sliderImg.png'}
+      event_id={myPublication.id}
+      key={myPublication.id}
+      titleEvent={myPublication.title}
+      text={myPublication.description}
+      linkToEvent={myPublication.content}
+      votesCount={myPublication.votes_count}
+    />
+  ));
+
   const buttonPublications = function () {
     setShowVotes(false);
   };
@@ -41,36 +65,25 @@ export default function Profile() {
         />
       </div>
       <div className="flex justify-center pt-20 gap-3 h500-medium--14px">
-        <ButtonProfile text="Mis votos" onClickProfile={buttonVotes} />
         <ButtonProfile
+          className={showVotes ? 'bg-yellow-100 scale-105' : ''}
+          text="Mis votos"
+          onClickProfile={buttonVotes}
+        />
+        <ButtonProfile
+          className={!showVotes ? 'bg-yellow-100 scale-105' : ''}
           text="Mis publicaciones"
           onClickProfile={buttonPublications}
         />
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 w-fit h-2/3 m-auto pt-16 pb-40 justify-items-center gap-5">
         {showVotes
-          ? votes?.results.map((vote) => (
-              <SliderContent
-                img={vote.Publication.image_url || '/sliderImg.png'}
-                event_id={vote.publication_id}
-                key={vote.publication_id}
-                titleEvent={vote.Publication.title}
-                text={vote.Publication.description}
-                linkToEvent={vote.Publication.content}
-                votesCount={vote.Publication.votes_count}
-              />
-            ))
-          : myPublications?.results.map((myPublication) => (
-              <SliderContent
-                img={myPublication.image_url || '/sliderImg.png'}
-                event_id={myPublication.id}
-                key={myPublication.id}
-                titleEvent={myPublication.title}
-                text={myPublication.description}
-                linkToEvent={myPublication.content}
-                votesCount={myPublication.votes_count}
-              />
-            ))}
+          ? votes?.count !== 0
+            ? voteArr
+            : 'No hay votos'
+          : myPublications?.count !== 0
+          ? publicationArr
+          : 'No hay publicaciones'}
       </div>
     </Layout>
   );

@@ -2,7 +2,10 @@ import useSWR from 'swr';
 import axios from '../helpers/axios.helpers';
 import { fetcher } from '../helpers/fetcher';
 import { PublicationsResponse } from '../interfaces/publications.interface';
-import { UserInfoResponse } from '../interfaces/user-info.interface';
+import {
+  MyUserResponse,
+  UserInfoResponse,
+} from '../interfaces/user-info.interface';
 import { UserVotesResponse } from '../interfaces/votes.interface';
 
 const configSWR = { shouldRetryOnError: false, revalidateOnFocus: false };
@@ -10,6 +13,20 @@ const configSWR = { shouldRetryOnError: false, revalidateOnFocus: false };
 function useUserInfo() {
   const { data, error, isLoading, mutate } = useSWR<UserInfoResponse>(
     '/users/user-info',
+    fetcher,
+    configSWR
+  );
+  return {
+    data: data?.results,
+    error,
+    isLoading,
+    mutate,
+  };
+}
+
+function useMyUserInfo(user_id: any) {
+  const { data, error, isLoading, mutate } = useSWR<MyUserResponse>(
+    `/users/${user_id}`,
     fetcher,
     configSWR
   );
@@ -63,6 +80,7 @@ function useUserPublications(user_id: any) {
 
 export {
   useUserInfo,
+  useMyUserInfo,
   createPublication,
   useUserVotes,
   createVote,
