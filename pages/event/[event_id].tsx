@@ -26,7 +26,7 @@ export default function Detail() {
   const router = useRouter();
   const { event_id } = router.query;
 
-  const { data: publications } = usePublications();
+  const { data: publications, mutate } = usePublications();
   const { data: categories } = useCategories();
   const { data: userInfo, error } = useUserInfo();
   const { data: votes } = useUserVotes(userInfo?.id);
@@ -35,6 +35,8 @@ export default function Detail() {
   const [showMenuHeader, setShowMenuHeader] = useState(false);
 
   const [voted, setVoted] = useState(false);
+
+  mutate();
 
   const clickVote = async function votePublication() {
     if (error) {
@@ -220,7 +222,17 @@ export default function Detail() {
           <p className="h400-normal--16px pb-5">
             Las personas últimamente están hablando de esto
           </p>
-          <Slider publications={publications?.results || []} />
+          <Slider
+            publications={
+              publications?.results
+                .map((x) => x)
+                .sort(
+                  (a, b) =>
+                    Number(new Date(b.created_at)) -
+                    Number(new Date(a.created_at))
+                ) || []
+            }
+          />
         </section>
       </main>
     </Layout>

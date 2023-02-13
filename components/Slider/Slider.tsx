@@ -37,8 +37,6 @@ const Slider = ({ publications }: Props) => {
           },
           1200: {
             width: 940,
-            allowTouchMove: false,
-            grabCursor: false,
           },
         }}
         // install Swiper modules
@@ -47,6 +45,8 @@ const Slider = ({ publications }: Props) => {
         slidesPerView={3}
         navigation
         pagination={{ clickable: true }}
+        allowTouchMove={true}
+        grabCursor={true}
       >
         <SliderButtons back next />
 

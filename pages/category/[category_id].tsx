@@ -59,7 +59,13 @@ export default function Category() {
           <p className="h400-normal--16px pb-5">
             Lo que las personas piden más
           </p>
-          <Slider publications={publications?.results || []} />
+          <Slider
+            publications={
+              publications?.results
+                .map((x) => x)
+                .sort((a, b) => b.votes_count - a.votes_count) || []
+            }
+          />
         </section>
         {/* SUGERENCIAS */}
         <section className="px-5 min-[1200px]:px-0 my-14">
@@ -84,7 +90,17 @@ export default function Category() {
           <p className="h400-normal--16px pb-5">
             Las personas últimamente están hablando de esto
           </p>
-          <Slider publications={publications?.results || []} />
+          <Slider
+            publications={
+              publications?.results
+                .map((x) => x)
+                .sort(
+                  (a, b) =>
+                    Number(new Date(b.created_at)) -
+                    Number(new Date(a.created_at))
+                ) || []
+            }
+          />
         </section>
       </main>
     </Layout>

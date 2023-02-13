@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import router from 'next/router';
 import { ReactNode, useEffect, useState } from 'react';
+import { usePublications } from '../lib/services/publications.services';
 import {
   createVote,
   useUserInfo,
@@ -14,6 +15,7 @@ interface Props {
 }
 
 const LikedIcon = ({ className, publicationId }: Props) => {
+  const { mutate } = usePublications();
   const { data: userInfo } = useUserInfo();
   const { data: votes } = useUserVotes(userInfo?.id);
 
@@ -25,14 +27,10 @@ const LikedIcon = ({ className, publicationId }: Props) => {
     } else {
       await createVote(publicationId)
         .then((res) => {
-          if (res.data.results == 'Vote removed') {
-            setLiked(false);
-          } else {
-            setLiked(true);
-          }
-          console.log(res.data.results);
+          setLiked(res.data.results !== 'Vote removed');
         })
         .catch((err) => console.log(err));
+      mutate();
     }
   };
 
@@ -48,7 +46,7 @@ const LikedIcon = ({ className, publicationId }: Props) => {
 
   return (
     <button
-      className={`${className} absolute z-10 hover:scale-105 transition-transform flex items-center justify-center p-2 h-12 w-12 border-white rounded-full ${
+      className={`${className} absolute z-10 hover:scale-105 transition-transform flex items-center justify-center p-2 h-12 w-12 border-2 border-white rounded-full ${
         liked ? ' bg-primarypink' : ' bg-primarygrayLight'
       }`}
       onClick={clickVote}

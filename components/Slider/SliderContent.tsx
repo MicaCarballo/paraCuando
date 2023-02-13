@@ -37,7 +37,7 @@ export default function SliderContent({
           href={`/event/${event_id}`}
           className="h600-medium--20px hover:underline"
         >
-          {titleEvent.slice(0, 25) + (titleEvent.length > 25 ? '...' : '')}
+          {titleEvent.slice(0, 23) + (titleEvent.length > 23 ? '...' : '')}
         </Link>
         <p className="h400-medium--15px h-[90px] overflow-hidden relative z-0">
           {text}

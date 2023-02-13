@@ -14,8 +14,10 @@ import profileimg from '../../public/profileimg.png';
 export default function Profile() {
   const [showVotes, setShowVotes] = useState(false);
   const { data: user } = useUserInfo();
-  const { data: votes } = useUserVotes(user?.id);
-  const { data: myPublications } = useUserPublications(user?.id);
+  const { data: votes, mutate: votesMutate } = useUserVotes(user?.id);
+  const { data: myPublications, mutate: publiMutate } = useUserPublications(
+    user?.id
+  );
 
   let voteArr = votes?.results.map((vote) => (
     <SliderContent
@@ -40,13 +42,15 @@ export default function Profile() {
     />
   ));
 
-  const buttonPublications = function () {
-    setShowVotes(false);
+  const buttonUpdate = function (arg: boolean) {
+    setShowVotes(arg);
+    publiMutate();
   };
 
-  const buttonVotes = function () {
-    setShowVotes(true);
-  };
+  const buttonPublications = () => buttonUpdate(false);
+  const buttonVotes = () => buttonUpdate(true);
+
+  votesMutate();
 
   return (
     <Layout

@@ -34,7 +34,7 @@ export default function Post() {
           timer: 2000,
           showConfirmButton: false,
         });
-        reset();
+        router.push('/profile');
       })
       .catch((err) =>
         Swal.fire({

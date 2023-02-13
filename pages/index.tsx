@@ -16,7 +16,6 @@ import { usePublications } from '../lib/services/publications.services';
 export default function Index() {
   const { data: publications, isLoading } = usePublications();
   const { data: categories } = useCategories();
-  console.log(publications);
 
   if (isLoading) {
     return <div>Cargando . . .</div>;
@@ -59,7 +58,13 @@ export default function Index() {
           <p className="h400-normal--16px pb-5">
             Lo que las personas piden más
           </p>
-          <Slider publications={publications?.results || []} />
+          <Slider
+            publications={
+              publications?.results
+                .map((x) => x)
+                .sort((a, b) => b.votes_count - a.votes_count) || []
+            }
+          />
         </section>
 
         {/* SUGERENCIAS */}
@@ -87,7 +92,17 @@ export default function Index() {
           <p className="h400-normal--16px pb-5">
             Las personas últimamente están hablando de esto
           </p>
-          <Slider publications={publications?.results || []} />
+          <Slider
+            publications={
+              publications?.results
+                .map((x) => x)
+                .sort(
+                  (a, b) =>
+                    Number(new Date(b.created_at)) -
+                    Number(new Date(a.created_at))
+                ) || []
+            }
+          />
         </section>
       </main>
     </Layout>

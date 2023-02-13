@@ -20,8 +20,16 @@ const Header = ({ isLogged = false }: Props) => {
 
   return (
     <>
+      <div
+        className={`w-full h-screen bg-black fixed z-10 ${
+          showMenu
+            ? 'opacity-30 pointer-events-auto'
+            : 'opacity-0 pointer-events-none'
+        } transition-opacity`}
+        onClick={() => setShowMenu(false)}
+      ></div>
       <div className="bg-primaryblackLight text-white">
-        <nav className="flex gap-4 justify-between items-center px-10 md:px-40 h-16 w-full my-0 mx-auto">
+        <nav className="flex gap-4 justify-between items-center px-4 md:px-40 h-16 w-full my-0 mx-auto">
           <Link href={'/'}>
             <Image
               src={paraCuandoLogo}
