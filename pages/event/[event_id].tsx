@@ -9,12 +9,15 @@ import SearchBar from '../../components/SearchBar';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import Swal from 'sweetalert2';
 import 'swiper/css';
 import Categories from '../../components/Categories';
 import Component1 from '../../components/Component1';
 import Slider from '../../components/Slider/Slider';
 import { useCategories } from '../../lib/services/categories.services';
+import {
+  confirmButton,
+  successAlert,
+} from '../../lib/services/notification.services';
 import { usePublications } from '../../lib/services/publications.services';
 import {
   createVote,
@@ -37,27 +40,32 @@ export default function Detail() {
   const [voted, setVoted] = useState(false);
 
   mutate();
+  console.log(publications);
 
   const clickVote = async function votePublication() {
     if (error) {
       router.push('/login');
     } else {
-      await createVote(event_id)
-        .then((res) => {
-          if (res.data.results == 'Vote removed') {
-            setVoted(false);
-          } else {
-            setVoted(true);
-            Swal.fire({
-              title: 'Piola!',
-              text: 'Voto enviado',
-              icon: 'success',
-              timer: 1000,
-              showConfirmButton: false,
-            });
+      if (voted) {
+        confirmButton('¿Quieres remover tu voto?', 'Sí', 'No').then(
+          async (res) => {
+            if (res) {
+              await createVote(event_id).then((res) => {
+                setVoted(res.data.results !== 'Vote removed');
+                successAlert('Voto removido');
+              });
+            }
           }
-        })
-        .catch((err) => console.log(err));
+        );
+      } else {
+        await createVote(event_id).then((res) => {
+          setVoted(res.data.results !== 'Vote removed');
+          if (res.data.results !== 'Vote removed') {
+            successAlert('Voto realizado con éxito', '');
+          }
+        });
+      }
+      mutate();
     }
   };
 
@@ -71,8 +79,6 @@ export default function Detail() {
     setVoted(flag);
   }, [votes]);
 
-  console.log(detail);
-
   return (
     <Layout
       title="Para Cuándo? - Detalles"
@@ -81,7 +87,7 @@ export default function Detail() {
       <header className="pl-10 pr-5 py-5 shadow-lg">
         <div className="flex justify-evenly items-center gap-2 lg:mx-auto max-w-7xl">
           {/* RESPONSIVE - HIGHER DEVICES */}
-          <div className="hidden min-[800px]:flex gap-1">
+          <div className="hidden md:flex gap-1">
             {categories?.map((category) => (
               <Link href={`/category/${category.id}`} key={category.id}>
                 <Component1 text={category.name} />
@@ -95,7 +101,7 @@ export default function Detail() {
               onClick={() => {
                 setShowMenuHeader(!showMenuHeader);
               }}
-              className="min-[800px]:hidden flex items-center justify-center pr-6"
+              className="md:hidden flex items-center justify-center pr-6"
             >
               <svg
                 width="49"
@@ -130,7 +136,7 @@ export default function Detail() {
             </button>
             {showMenuHeader && (
               <div
-                className={`min-[800px]:hidden z-10 w-48 flex gap-x-8 gap-y-5 flex-col absolute -left-6 top-10 bg-white shadow-lg rounded-xl p-5 text-primary_black transition-opacity ${
+                className={`md:hidden z-10 w-48 flex gap-x-8 gap-y-5 flex-col absolute -left-6 top-10 bg-white shadow-lg rounded-xl p-5 text-primary_black transition-opacity ${
                   showMenuHeader
                     ? 'opacity-100'
                     : 'opacity-0 pointer-events-none'
@@ -148,8 +154,8 @@ export default function Detail() {
         </div>
       </header>
       <main className="py-20 lg:mx-auto lg:px-[170px] max-w-7xl">
-        <section className="pb-14 min-[800px]:pb-28">
-          <div className="px-10 min-[1200px]:p-0 min-[800px]:grid grid-cols-2 gap-5">
+        <section className="pb-14 md:pb-28">
+          <div className="px-10 lg:p-0 md:grid grid-cols-2 gap-5">
             <div className="max-w-xl">
               <h4 className="h500-normal--16px">
                 {detail?.publication_type.name + ' / ' + detail?.tags[0].name}
@@ -185,7 +191,7 @@ export default function Detail() {
               <button
                 id="vote"
                 onClick={clickVote}
-                className="hidden min-[800px]:block bg-primaryblue text-white text-lg font-normal rounded-full my-5 mx-auto py-2 w-full max-w-96"
+                className="hidden md:block bg-primaryblue text-white text-lg font-normal rounded-full my-5 mx-auto py-2 w-full max-w-96"
               >
                 {voted ? 'Quitar voto' : 'Votar'}
               </button>
@@ -200,14 +206,14 @@ export default function Detail() {
             />
             <button
               onClick={clickVote}
-              className="block min-[800px]:hidden bg-primaryblue text-white text-lg font-normal rounded-full my-5 py-2 w-full min-[800px]:w-96"
+              className="block md:hidden bg-primaryblue text-white text-lg font-normal rounded-full my-5 py-2 w-full md:w-96"
             >
               {voted ? 'Quitar voto' : 'Votar'}
             </button>
           </div>
         </section>
         {/* CATEGORIAS */}
-        <section className="w-full relative px-5 py-6 mb-16 bg-primarygrayLighter min-[800px]:px-10">
+        <section className="w-full relative px-5 py-6 mb-16 bg-primarygrayLighter md:px-10">
           <h2 className="h500-normal--24px pb-2">¡Hagámoslo más personal!</h2>
           <p className="h400-normal--16px pb-5">
             Selecciona tus interes para brindarte sugerencia de acuerdo a tus
@@ -217,7 +223,7 @@ export default function Detail() {
         </section>
 
         {/* RECIENTES */}
-        <section className="px-5 min-[1200px]:px-0">
+        <section className="px-5 lg:px-0">
           <h2 className="h500-normal--24px pb-2">Recientes</h2>
           <p className="h400-normal--16px pb-5">
             Las personas últimamente están hablando de esto

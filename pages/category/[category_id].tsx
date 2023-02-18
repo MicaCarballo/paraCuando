@@ -44,7 +44,7 @@ export default function Category() {
       </header>
       <main className="lg:mx-auto lg:px-[170px] max-w-7xl">
         <div className="flex flex-col-reverse lg:flex-row lg:items-end">
-          <div className="px-5 pt-5 lg:pt-11 min-[1200px]:px-0 flex justify-center gap-2">
+          <div className="px-5 pt-5 lg:pt-11 lg:px-0 flex justify-center gap-2">
             {categories?.map((category) => (
               <Link href={`/category/${category.id}`} key={category.id}>
                 <Component1 text={category.name} />
@@ -54,7 +54,7 @@ export default function Category() {
           <SearchBar className="flex sm:max-w-xs mx-auto mt-5 lg:ml-auto lg:mr-0" />
         </div>
         {/* POPULARES */}
-        <section className="px-5 min-[1200px]:px-0 my-14">
+        <section className="px-5 lg:px-0 my-14">
           <h2 className="h500-normal--24px pb-1">Populares en Querétaro</h2>
           <p className="h400-normal--16px pb-5">
             Lo que las personas piden más
@@ -68,7 +68,7 @@ export default function Category() {
           />
         </section>
         {/* SUGERENCIAS */}
-        <section className="px-5 min-[1200px]:px-0 my-14">
+        <section className="px-5 lg:px-0 my-14">
           <h2 className="h500-normal--24px pb-1">Sugerencias para ti</h2>
           <p className="h400-normal--16px pb-5">
             Publicaciones que podrías colaborar
@@ -76,7 +76,7 @@ export default function Category() {
           <Slider publications={publications?.results || []} />
         </section>
         {/* CATEGORIAS */}
-        <section className="my-14 w-full relative px-5 py-6 mb-16 bg-primarygrayLighter min-[800px]:px-10">
+        <section className="my-14 w-full relative px-5 py-6 mb-16 bg-primarygrayLighter md:px-10">
           <h2 className="h500-normal--24px pb-1">¡Hagámoslo más personal!</h2>
           <p className="h400-normal--16px pb-5">
             Selecciona tus interes para brindarte sugerencia de acuerdo a tus
@@ -85,7 +85,7 @@ export default function Category() {
           <Categories />
         </section>
         {/* RECIENTES */}
-        <section className="px-5 min-[1200px]:px-0 my-14">
+        <section className="px-5 lg:px-0 my-14">
           <h2 className="h500-normal--24px">Recientes</h2>
           <p className="h400-normal--16px pb-5">
             Las personas últimamente están hablando de esto

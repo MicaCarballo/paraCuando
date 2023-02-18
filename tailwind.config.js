@@ -1,5 +1,8 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+
+const withMT = require('@material-tailwind/react/utils/withMT');
+
+module.exports = withMT({
   content: [
     './pages/**/*.{js,ts,jsx,tsx}',
     './components/**/*.{js,ts,jsx,tsx}',
@@ -7,13 +10,6 @@ module.exports = {
   ],
   // Ensure these match with .storybook/preview.js
   theme: {
-    screens: {
-      xs: '375px',
-      sm: '600px',
-      md: '900px',
-      lg: '1200px',
-      xl: '1536px',
-    },
     extend: {
       colors: {
         primaryblue: '#1B4DB1',
@@ -50,7 +46,14 @@ module.exports = {
         //* TOURNAMENTS
         tournamentsImage: "url('../public/tournamentsImage.png')",
       },
+      screens: {
+        xs: '375px',
+        sm: '600px',
+        md: '900px',
+        lg: '1200px',
+        xl: '1536px',
+      },
     },
   },
   plugins: [],
-};
+});

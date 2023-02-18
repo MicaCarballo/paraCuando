@@ -1,9 +1,13 @@
 import cookie from 'js-cookie';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { login } from '../../lib/services/auth.services';
+import {
+  errorAlert,
+  loginAlert,
+} from '../../lib/services/notification.services';
 
 type Inputs = {
   email: string;
@@ -11,16 +15,26 @@ type Inputs = {
 };
 
 const Login = () => {
+  const [passwordType, setPasswordType] = useState('password');
+
   const { register, handleSubmit } = useForm<Inputs>();
   const router = useRouter();
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     await login(data)
       .then((res) => {
         cookie.set('token', res.data.token[0].public);
-        window.location.href = '/profile';
+        loginAlert();
+        setTimeout(() => (window.location.href = '/profile'), 2000);
       })
-      .catch((err) => console.log(err));
-    console.log(data);
+      .catch((err) => errorAlert('Datos incorrectos'));
+  };
+
+  const togglePassword = () => {
+    if (passwordType === 'password') {
+      setPasswordType('text');
+      return;
+    }
+    setPasswordType('password');
   };
 
   useEffect(() => {
@@ -60,13 +74,22 @@ const Login = () => {
             <label htmlFor="password" className="text-[#1D1C3F] font-semibold">
               Password
             </label>
-            <input
-              id="password"
-              type="password"
-              placeholder="***********"
-              className="h-11 rounded-sm p-2 border-gray-300 border-solid border"
-              {...register('password', { required: true })}
-            />
+            <div className="relative w-fit">
+              <input
+                id="password"
+                type={passwordType}
+                placeholder="***********"
+                className="h-11 rounded-sm p-2 border-gray-300 border-solid border"
+                minLength={8}
+                {...register('password', { required: true })}
+              />
+              <div
+                onClick={togglePassword}
+                className="absolute -right-1/2 top-1/2 -translate-y-1/2 cursor-pointer selection:bg-transparent"
+              >
+                {passwordType == 'password' ? 'Mostrar' : 'No mostrar'}
+              </div>
+            </div>
             <button className=" bg-primaryblue h-10 rounded p-2 text-white cursor-pointer">
               Log in
             </button>

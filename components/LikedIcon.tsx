@@ -1,6 +1,10 @@
 import Image from 'next/image';
 import router from 'next/router';
 import { ReactNode, useEffect, useState } from 'react';
+import {
+  confirmButton,
+  successAlert,
+} from '../lib/services/notification.services';
 import { usePublications } from '../lib/services/publications.services';
 import {
   createVote,
@@ -21,15 +25,29 @@ const LikedIcon = ({ className, publicationId }: Props) => {
 
   const [liked, setLiked] = useState(false);
 
-  const clickVote = async function votePublication() {
+  const clickVote = async () => {
     if (!userInfo) {
       router.push('/login');
     } else {
-      await createVote(publicationId)
-        .then((res) => {
+      if (liked) {
+        confirmButton('¿Quieres remover tu voto?', 'Sí', 'No').then(
+          async (res) => {
+            if (res) {
+              await createVote(publicationId).then((res) => {
+                setLiked(res.data.results !== 'Vote removed');
+                successAlert('Voto removido');
+              });
+            }
+          }
+        );
+      } else {
+        await createVote(publicationId).then((res) => {
           setLiked(res.data.results !== 'Vote removed');
-        })
-        .catch((err) => console.log(err));
+          if (res.data.results !== 'Vote removed') {
+            successAlert('Voto realizado con éxito', '');
+          }
+        });
+      }
       mutate();
     }
   };
