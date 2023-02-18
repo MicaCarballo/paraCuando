@@ -1,10 +1,12 @@
+import { Input } from '@material-tailwind/react';
+import Textarea from '@material-tailwind/react/components/Textarea';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import Swal from 'sweetalert2';
 import { useCategories } from '../lib/services/categories.services';
+import { successAlert } from '../lib/services/notification.services';
 import { useTags } from '../lib/services/tags.services';
 import { createPublication } from '../lib/services/user.services';
 import addIcon from '../public/addIcon.png';
@@ -18,7 +20,7 @@ type Inputs = {
 };
 
 export default function Post() {
-  const { register, handleSubmit, reset } = useForm<Inputs>();
+  const { register, handleSubmit } = useForm<Inputs>();
   const router = useRouter();
 
   const { data: tags } = useTags();
@@ -27,22 +29,10 @@ export default function Post() {
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     await createPublication(data)
       .then(() => {
-        Swal.fire({
-          title: 'Piola!',
-          text: 'Se ha creado la publicación',
-          icon: 'success',
-          timer: 2000,
-          showConfirmButton: false,
-        });
+        successAlert('¡Se subió la publicación correctamente!');
         router.push('/profile');
       })
-      .catch((err) =>
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: '¡Algo salió mal!',
-        })
-      );
+      .catch((err) => console.log(err));
   };
 
   const [stepForm, setstepForm] = useState(0);
@@ -122,18 +112,14 @@ export default function Post() {
             >
               {stepForm === 0 && (
                 <section className="flex flex-col gap-4">
-                  <label htmlFor="title" className=" relative">
-                    <input
-                      id="title"
-                      type="text"
-                      className="w-full h-12 border border-borderGray rounded-[11px] p-5"
-                      required
-                      {...register('title')}
-                    />
-                    <span className=" bg-white absolute left-2.5 px-2 transform -translate-y-3 text-borderGray">
-                      Titulo de publicación
-                    </span>
-                  </label>
+                  <Input
+                    label="Título de publicación"
+                    id="title"
+                    type="text"
+                    className="w-full h-12 border border-borderGray rounded-[11px] p-5"
+                    required
+                    {...register('title')}
+                  />
                   <div className="flex flex-col gap-4 sm:flex-row">
                     <select
                       {...register('tags')}
@@ -162,11 +148,9 @@ export default function Post() {
                     <select
                       {...register('idPublicationType')}
                       className="w-full h-12 border border-borderGray rounded-[11px] pl-2"
-                      defaultValue={''}
-                      required
                     >
                       <option
-                        value=""
+                        value={''}
                         disabled
                         hidden
                         className="text-borderGray"
@@ -176,46 +160,34 @@ export default function Post() {
                       {categories?.map((category) => (
                         <option
                           value={category.id}
-                          key={category.id}
                           className="text-borderGray text-xl"
+                          key={category.id}
                         >
                           {category.name}
                         </option>
                       ))}
                     </select>
                   </div>
-                  <label htmlFor="description" className=" relative">
-                    <textarea
-                      id="description"
-                      className="w-full h-24 border border-solid border-borderGray rounded-md p-5 resize-none"
-                      {...register('description')}
-                      required
-                    />
-                    <span
-                      className=" bg-white absolute left-2.5 top-5 px-2  transform -translate-y-7 -translate-4  text-[gray]
-                  "
-                    >
-                      ¿Por qué lo recomiendas?
-                    </span>
-                  </label>
-                  <label htmlFor="url" className=" relative">
-                    <input
-                      id="url"
-                      type="text"
-                      className="w-full h-11 border border-solid border-borderGray rounded-md p-5"
-                      required
-                      {...register('urlShare')}
-                    />
-                    <span className=" bg-white absolute left-2.5 top-5 px-2  transform -translate-y-7 -translate-4 text-[gray]">
-                      Link de referencia
-                    </span>
-                  </label>
+                  <Textarea
+                    label="¿Por qué lo recomiendas?"
+                    id="description"
+                    // className="w-full h-24 border border-solid border-borderGray rounded-md p-5 resize-none"
+                    {...register('description')}
+                    required
+                  />
+                  <Input
+                    label="Link de referencia"
+                    id="url"
+                    type="text"
+                    className="w-full h-11 border border-solid border-borderGray rounded-md p-5"
+                    required
+                    {...register('urlShare')}
+                  />
                   <button
-                    // onClick={completeFormStep}
-                    type="submit"
+                    onClick={completeFormStep}
                     className=" h-11 max-w-xs px-4 bg-primaryblue mt-10 rounded-3xl text-white self-center"
                   >
-                    Crear Publicación
+                    Siguiente
                   </button>
                 </section>
               )}
@@ -260,7 +232,10 @@ export default function Post() {
                       />
                     </label>
                   </div>
-                  <button className=" h-11 w-28 px-4 bg-primaryblue m-8 rounded-3xl text-white self-center">
+                  <button
+                    type="submit"
+                    className=" h-11 w-28 px-4 bg-primaryblue m-8 rounded-3xl text-white self-center"
+                  >
                     Publicar
                   </button>
                 </section>

@@ -1,10 +1,13 @@
 import cookie from 'js-cookie';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import Swal from 'sweetalert2';
 import { signUp } from '../lib/services/auth.services';
+import {
+  errorAlert,
+  successAlert,
+} from '../lib/services/notification.services';
 
 type Inputs = {
   firstName: string;
@@ -14,33 +17,32 @@ type Inputs = {
 };
 
 const SignUp = () => {
+  const [passwordType, setPasswordType] = useState('password');
+
   const router = useRouter();
   const { register, handleSubmit } = useForm<Inputs>();
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     signUp(data)
       .then((res) => {
-        Swal.fire({
-          title: 'Piola!',
-          text: 'Se ha registrado el usuario',
-          icon: 'success',
-          timer: 2000,
-          showConfirmButton: false,
-        });
-        console.log(res.data);
+        successAlert('Se ha registrado el usuario');
         setTimeout(() => {
           window.location.href = '/login';
         }, 2500);
       })
       .catch((err) => {
-        Swal.fire({
-          icon: 'error',
-          title: 'Error',
-          text: '¡Este usuario ya existe!',
-        });
+        errorAlert('Este usuario ya existe');
         console.log(err);
       });
     console.log(data);
+  };
+
+  const togglePassword = () => {
+    if (passwordType === 'password') {
+      setPasswordType('text');
+      return;
+    }
+    setPasswordType('password');
   };
 
   useEffect(() => {
@@ -105,13 +107,22 @@ const SignUp = () => {
             <label htmlFor="" className="text-[#1D1C3F] font-semibold">
               Password
             </label>
-            <input
-              id="password"
-              type="password"
-              placeholder="***********"
-              className="h-11 rounded-sm p-2 border-gray-300 border-solid border"
-              {...register('password', { required: true })}
-            />
+            <div className="relative w-fit">
+              <input
+                id="password"
+                type={passwordType}
+                placeholder="***********"
+                className="h-11 rounded-sm p-2 border-gray-300 border-solid border"
+                minLength={8}
+                {...register('password', { required: true })}
+              />
+              <div
+                onClick={togglePassword}
+                className="absolute -right-1/2 top-1/2 -translate-y-1/2 cursor-pointer selection:bg-transparent"
+              >
+                {passwordType == 'password' ? 'Mostrar' : 'No mostrar'}
+              </div>
+            </div>
             <button
               type="submit"
               className="bg-blue-800 h-10 rounded p-2 text-white cursor-pointer"

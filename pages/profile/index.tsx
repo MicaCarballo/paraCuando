@@ -44,12 +44,12 @@ export default function Profile() {
 
   const buttonUpdate = function (arg: boolean) {
     setShowVotes(arg);
-    publiMutate();
   };
 
   const buttonPublications = () => buttonUpdate(false);
   const buttonVotes = () => buttonUpdate(true);
 
+  publiMutate();
   votesMutate();
 
   return (

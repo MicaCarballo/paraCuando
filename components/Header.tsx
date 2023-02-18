@@ -21,7 +21,7 @@ const Header = ({ isLogged = false }: Props) => {
   return (
     <>
       <div
-        className={`w-full h-screen bg-black fixed z-10 ${
+        className={`w-full h-screen bg-black fixed z-20 ${
           showMenu
             ? 'opacity-30 pointer-events-auto'
             : 'opacity-0 pointer-events-none'
@@ -142,7 +142,7 @@ const Header = ({ isLogged = false }: Props) => {
                 {/* ------- MENU ------- */}
                 <div
                   id="menu"
-                  className={`z-20 w-48 h-fit flex gap-x-8 gap-y-5 flex-col absolute top-8 -left-5 bg-white shadow-lg rounded-xl p-5 text-primaryblack transition-opacity ${
+                  className={`z-30 w-48 h-fit flex gap-x-8 gap-y-5 flex-col absolute top-8 -left-5 bg-white shadow-lg rounded-xl p-5 text-primaryblack transition-opacity ${
                     showMenu ? 'opacity-100' : 'opacity-0 pointer-events-none'
                   }`}
                 >
@@ -162,7 +162,7 @@ const Header = ({ isLogged = false }: Props) => {
                         fill="#1B4DB1"
                       />
                     </svg>
-                    Crear publicación
+                    Publicar
                   </Link>
                   <Link
                     href={'/profile'}

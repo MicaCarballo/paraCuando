@@ -53,7 +53,7 @@ export default function Index() {
       </div>
       <main className="lg:mx-auto lg:px-[170px] max-w-7xl">
         {/* POPULARES */}
-        <section className="px-5 min-[1200px]:px-0 my-14">
+        <section className="px-5 lg:px-0 my-14">
           <h2 className="h500-normal--24px pb-1">Populares en Querétaro</h2>
           <p className="h400-normal--16px pb-5">
             Lo que las personas piden más
@@ -68,7 +68,7 @@ export default function Index() {
         </section>
 
         {/* SUGERENCIAS */}
-        <section className="px-5 min-[1200px]:px-0 my-14">
+        <section className="px-5 lg:px-0 my-14">
           <h2 className="h500-normal--24px pb-1">Sugerencias para ti</h2>
           <p className="h400-normal--16px pb-5">
             Publicaciones que podrías colaborar
@@ -87,7 +87,7 @@ export default function Index() {
         </section>
 
         {/* RECIENTES */}
-        <section className="px-5 min-[1200px]:px-0 my-14">
+        <section className="px-5 lg:px-0 my-14">
           <h2 className="h500-normal--24px">Recientes</h2>
           <p className="h400-normal--16px pb-5">
             Las personas últimamente están hablando de esto
